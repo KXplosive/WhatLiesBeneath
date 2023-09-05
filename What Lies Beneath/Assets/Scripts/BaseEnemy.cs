@@ -13,13 +13,13 @@ public class BaseEnemy {
 
     public string name;
 
-    public float maxHP;
-    public float HP;
+    public int maxHP;
+    public int HP;
 
-    public float maxMP;
-    public float MP;
+    public int maxMP;
+    public int MP;
 
-    public float ATK;
-    public float DEF;
+    public int ATK;
+    public int DEF;
     public int stamina;
 }

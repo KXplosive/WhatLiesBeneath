@@ -6,11 +6,11 @@ using UnityEngine;
 public class BasePlayer {
     public string name;
 
-    public float maxHP;
-    public float HP;
+    public int maxHP;
+    public int HP;
 
-    public float maxMP;
-    public float MP;
+    public int maxMP;
+    public int MP;
 
     public int stamina;
 }
