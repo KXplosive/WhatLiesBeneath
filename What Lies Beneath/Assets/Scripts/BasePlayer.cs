@@ -12,6 +12,10 @@ public class BasePlayer {
     public int maxMP;
     public int MP;
 
+    public int ATK;
+    public int DEF;
+
+    public int temperature;
     public int stamina;
 }
 
