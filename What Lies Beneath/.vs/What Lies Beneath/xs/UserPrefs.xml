@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{7CAC69AE-92A9-997A-C707-52F04BFCCF09}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EnemyBase.cs">
+    <Files>
+      <File FileName="Assets/Scripts/PersonajeBase.cs" Line="25" Column="1" />
+      <File FileName="Assets/Scripts/EnemyBase.cs" Line="14" Column="6" />
+      <File FileName="Assets/Scripts/HeroStateMachine.cs" Line="87" Column="23" />
+      <File FileName="Assets/Scripts/EnemyStateMachine.cs" />
+      <File FileName="Assets/Scripts/Attack.cs" Line="5" Column="20" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="What Lies Beneath" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="EnemyBase.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="9c281b71-f233-484e-a689-78e893840358" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
