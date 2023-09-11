@@ -123,6 +123,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &553779993
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 553779995}
+  - component: {fileID: 553779994}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &553779994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553779993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dcf109bddd444f148250d706355b389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  environmentTemperature: 40
+  player: {fileID: 1911527958}
+--- !u!4 &553779995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553779993}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.21900357, y: 0.3677503, z: -0.0013292055}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &845269086
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,26 +719,25 @@ MonoBehaviour:
     attacks:
     - name: Shield Bash
       baseDamage: 10
-      cooldown: 0
       startup: 2
       ending: 2
       MP: 0
       ST: 20
+      temperatureChange: 0
     - name: Quick Slash
       baseDamage: 20
-      cooldown: 0
       startup: 0.5
       ending: 1
       MP: 10
       ST: 20
+      temperatureChange: -5
     - name: Strong Slash
       baseDamage: 40
-      cooldown: 0
       startup: 2.5
       ending: 2.5
       MP: 0
       ST: 35
-  temperatureController: {fileID: 0}
+      temperatureChange: 0
   enemies:
   - {fileID: 1812754623}
   - {fileID: 845269087}

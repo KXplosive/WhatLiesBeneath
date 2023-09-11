@@ -11,4 +11,5 @@ public class Attack
     public float ending;
     public float MP;
     public float ST;
+    public float temperatureChange;
 }

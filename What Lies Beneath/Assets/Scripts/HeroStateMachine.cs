@@ -5,7 +5,6 @@ using UnityEngine;
 public class HeroStateMachine : MonoBehaviour
 {
     public PersonajeBase character;
-    public GameObject temperatureController;
     public EnemyStateMachine[] enemies;
     public GameObject cursor;
 
@@ -141,6 +140,7 @@ public class HeroStateMachine : MonoBehaviour
     IEnumerator Attacking(Attack attack,EnemyStateMachine enemy,PersonajeBase character)
     {
         character.currentST -= attack.ST;
+        character.temperature += attack.temperatureChange;
         for (float i=0f;i<=attack.startup;i += 1 * Time.deltaTime)
         {
             yield return null;
