@@ -19,6 +19,7 @@ public class EnemyStateMachine : MonoBehaviour
     {
         if (enemy.currentHP <= 0)
         {
+            Destroy(GameObject.FindGameObjectWithTag("Cursor"));
             Destroy(gameObject);
         }
     }

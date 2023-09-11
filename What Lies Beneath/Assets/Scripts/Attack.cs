@@ -7,5 +7,8 @@ public class Attack
 {
     public string name;
     public int baseDamage;
-    public int cooldown;
+    public float startup;
+    public float ending;
+    public float MP;
+    public float ST;
 }

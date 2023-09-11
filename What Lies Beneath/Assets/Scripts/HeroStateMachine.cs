@@ -45,8 +45,10 @@ public class HeroStateMachine : MonoBehaviour
         character.currentST = character.baseST;
         character.currentAttack = character.attack;
         character.currentDefense = character.defense;
+        StartCoroutine(RecoverST(character));
     }
 
+    int attackSelected;
     // Update is called once per frame
     void Update()
     {
@@ -54,8 +56,22 @@ public class HeroStateMachine : MonoBehaviour
         switch (currentBattleState)
         {
             case (BattleState.WAITING):
-
-            break;
+                if (Input.GetKeyDown("1"))
+                {
+                    currentBattleState = BattleState.ACTION;
+                    StartCoroutine(Attacking(character.attacks[0],enemies[enemySelected],character));
+                }
+                if (Input.GetKeyDown("2"))
+                {
+                    currentBattleState = BattleState.ACTION;
+                    StartCoroutine(Attacking(character.attacks[1], enemies[enemySelected], character));
+                }
+                if (Input.GetKeyDown("3"))
+                {
+                    currentBattleState = BattleState.ACTION;
+                    StartCoroutine(Attacking(character.attacks[2], enemies[enemySelected], character));
+                }
+                break;
             case (BattleState.ACTION):
 
             break;
@@ -118,25 +134,33 @@ public class HeroStateMachine : MonoBehaviour
             Instantiate(cursor, new Vector3(5.1528f, 2.0445f), Quaternion.identity);
         }
 
-        if (Input.GetKeyDown("1"))
-        {
-            float dmg = DamageCalc(character.currentAttack, enemies[enemySelected].enemy.currentDefense, character.attacks[0].baseDamage);
-            Debug.Log(dmg);
-            enemies[enemySelected].enemy.currentHP = enemies[enemySelected].enemy.currentHP - dmg;
-        }
-        if (Input.GetKeyDown("2"))
-        {
-            float dmg = DamageCalc(character.currentAttack, enemies[enemySelected].enemy.currentDefense, character.attacks[1].baseDamage);
-            Debug.Log(dmg);
-            enemies[enemySelected].enemy.currentHP = enemies[enemySelected].enemy.currentHP - dmg;
-        }
-        if (Input.GetKeyDown("3"))
-        {
-            float dmg = DamageCalc(character.currentAttack, enemies[enemySelected].enemy.currentDefense, character.attacks[2].baseDamage);
-            Debug.Log(dmg);
-            enemies[enemySelected].enemy.currentHP = enemies[enemySelected].enemy.currentHP - dmg;
-        }
+        
 
+    }
+
+    IEnumerator Attacking(Attack attack,EnemyStateMachine enemy,PersonajeBase character)
+    {
+        character.currentST -= attack.ST;
+        for (float i=0f;i<=attack.startup;i += 1 * Time.deltaTime)
+        {
+            yield return null;
+        }
+        enemy.enemy.currentHP -= DamageCalc(character.currentAttack, enemy.enemy.currentDefense, attack.baseDamage);
+        yield return null;
+        for (float i = 0f; i <= attack.ending; i += 1 * Time.deltaTime)
+        {
+            yield return null;
+        }
+  
+        if (character.currentST <= 0)
+        {
+            currentBattleState = BattleState.TIRED;
+        }
+        else
+        {
+            currentBattleState = BattleState.WAITING;
+        }
+        yield return null;
     }
 
     float DamageCalc(float attack, float defense, int baseAttack)
@@ -145,6 +169,27 @@ public class HeroStateMachine : MonoBehaviour
         Debug.Log(attack);
         Debug.Log(defense);
         return baseAttack * (defense / 100) / (attack / 50);
+    }
+
+    IEnumerator RecoverST(PersonajeBase character)
+    {
+        while (currentBattleState != BattleState.DEAD)
+        {
+            if (currentBattleState==BattleState.WAITING && character.currentST < 100)
+            {
+                character.currentST += 2.5f * Time.deltaTime;
+                if (character.currentST > 100)
+                {
+                    character.currentST = 100;
+                }
+            }else if (currentBattleState == BattleState.TIRED)
+            {
+                if (character.currentST < 0) { character.currentST = 0; }
+                character.currentST += 10f * Time.deltaTime;
+                if (character.currentST >=100) { currentBattleState = BattleState.WAITING; }
+            }
+            yield return null;
+        }
     }
 
 

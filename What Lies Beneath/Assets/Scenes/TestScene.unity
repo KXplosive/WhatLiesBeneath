@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 845269087}
   m_Layer: 0
   m_Name: Enemy2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy:
-    nombre: Don Enojon
+    nombre: John Malo
     currentHP: 100
     baseHP: 200
     Attack: 20
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 1258558823}
   m_Layer: 0
   m_Name: Enemy3
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 1277200696}
   m_Layer: 0
   m_Name: Enemy4
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -535,7 +535,7 @@ GameObject:
   - component: {fileID: 1812754623}
   m_Layer: 0
   m_Name: Enemy1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -640,7 +640,7 @@ GameObject:
   - component: {fileID: 1911527958}
   m_Layer: 0
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -674,12 +674,24 @@ MonoBehaviour:
     - name: Shield Bash
       baseDamage: 10
       cooldown: 0
+      startup: 2
+      ending: 2
+      MP: 0
+      ST: 20
     - name: Quick Slash
       baseDamage: 20
       cooldown: 0
+      startup: 0.5
+      ending: 1
+      MP: 10
+      ST: 20
     - name: Strong Slash
       baseDamage: 40
       cooldown: 0
+      startup: 2.5
+      ending: 2.5
+      MP: 0
+      ST: 35
   temperatureController: {fileID: 0}
   enemies:
   - {fileID: 1812754623}
