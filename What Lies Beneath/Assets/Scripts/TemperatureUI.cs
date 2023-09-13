@@ -8,12 +8,12 @@ public class TemperatureUI : MonoBehaviour
 {
 
     public TMP_Text displayText;
-    public PlayerController playerController;
-    [SerializeField] private int temperature = 35;
+    public HeroStateMachine heroStateMachine;
+    private float currentTemperature;
 
     // Start is called before the first frame update
     void Start() {
-
+        currentTemperature = Mathf.Round(heroStateMachine.character.temperature);
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class TemperatureUI : MonoBehaviour
     }
 
     public void UpdateTemperature() {
-        temperature = playerController.player.temperature;
-        displayText.text = temperature.ToString();
+        currentTemperature = Mathf.Round(heroStateMachine.character.temperature);
+        displayText.text = currentTemperature.ToString();
     }
 }

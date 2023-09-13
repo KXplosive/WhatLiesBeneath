@@ -37,7 +37,7 @@ public class HeroStateMachine : MonoBehaviour
     void Start()
     {
         enemySelected = 0;
-        Instantiate(cursor, new Vector3(5.3145f, -2.6514f), Quaternion.identity);
+        Instantiate(cursor, new Vector3(5.82f, -2.77f), Quaternion.identity);
         currentBattleState = BattleState.WAITING;
         character.currentHP = character.baseHP;
         character.currentMP = character.baseMP;
@@ -112,25 +112,25 @@ public class HeroStateMachine : MonoBehaviour
         {
             enemySelected = 0;
             Destroy(GameObject.FindGameObjectWithTag("Cursor"));
-            Instantiate(cursor, new Vector3(5.3145f, -2.6514f), Quaternion.identity);
+            Instantiate(cursor, new Vector3(5.82f, -2.77f), Quaternion.identity);
         }
         if (Input.GetKeyDown("i"))
         {
             enemySelected = 1;
             Destroy(GameObject.FindGameObjectWithTag("Cursor"));
-            Instantiate(cursor, new Vector3(0.44f, -2.44f), Quaternion.identity);
+            Instantiate(cursor, new Vector3(1.51f, -3.01f), Quaternion.identity);
         }
         if (Input.GetKeyDown("o"))
         {
             enemySelected = 2;
             Destroy(GameObject.FindGameObjectWithTag("Cursor"));
-            Instantiate(cursor, new Vector3(0.52f, 2.01f), Quaternion.identity);
+            Instantiate(cursor, new Vector3(1.34f, 0.15f), Quaternion.identity);
         }
         if (Input.GetKeyDown("p"))
         {
             enemySelected = 3;
             Destroy(GameObject.FindGameObjectWithTag("Cursor"));
-            Instantiate(cursor, new Vector3(5.1528f, 2.0445f), Quaternion.identity);
+            Instantiate(cursor, new Vector3(5.71f, 0.25f), Quaternion.identity);
         }
 
         
