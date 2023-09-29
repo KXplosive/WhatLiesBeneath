@@ -12,7 +12,8 @@ public class HeroStateMachine : MonoBehaviour
         WAITING,
         ACTION,
         DEAD,
-        TIRED
+        TIRED,
+        FREEZE
     }
 
     public enum TemperatureState
@@ -242,7 +243,8 @@ public class HeroStateMachine : MonoBehaviour
         {
             yield return null;
         }
-        currentBattleState = BattleState.TIRED;
+        currentBattleState = BattleState.FREEZE;
+        yield return null;
         for(float i=0f; i < 3; i += Time.deltaTime)
         {
             yield return null;

@@ -31,6 +31,7 @@ public class EnemyStateMachine : MonoBehaviour
         if (enemy.currentHP <= 0)
         {
             currentBattleState = BattleState.DEAD;
+            GetComponent<Renderer>().material.color = new Color ( 0.5f, 0.5f, 0.5f,1f);
         }
     }
 }
