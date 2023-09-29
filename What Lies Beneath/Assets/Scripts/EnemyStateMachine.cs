@@ -6,12 +6,23 @@ public class EnemyStateMachine : MonoBehaviour
 {
     public EnemyBase enemy;
 
+    public enum BattleState
+    {
+        ACTIONABLE,
+        UNACTIONABLE,
+        ACTION,
+        DEAD
+    }
+
+    public BattleState currentBattleState;
+
     // Start is called before the first frame update
     void Start()
     {
         enemy.currentHP = enemy.baseHP;
         enemy.currentAttack = enemy.Attack;
         enemy.currentDefense = enemy.Defense;
+        currentBattleState = BattleState.UNACTIONABLE;
     }
 
     // Update is called once per frame
@@ -19,8 +30,7 @@ public class EnemyStateMachine : MonoBehaviour
     {
         if (enemy.currentHP <= 0)
         {
-            Destroy(GameObject.FindGameObjectWithTag("Cursor"));
-            Destroy(gameObject);
+            currentBattleState = BattleState.DEAD;
         }
     }
 }

@@ -6,7 +6,6 @@ public class HeroStateMachine : MonoBehaviour
 {
     public PersonajeBase character;
     public EnemyStateMachine[] enemies;
-    public GameObject cursor;
 
     public enum BattleState
     {
@@ -18,6 +17,7 @@ public class HeroStateMachine : MonoBehaviour
 
     public enum TemperatureState
     {
+        UNASSIGNED,
         SCORCHING,
         HIGH,
         MODERATE,
@@ -29,15 +29,14 @@ public class HeroStateMachine : MonoBehaviour
 
     public BattleState currentBattleState;
     public TemperatureState currentTemperatureState;
+    public TemperatureState previousTemperatureState;
 
-    int enemySelected;
-
+    public float[] temperatureModifiers = {0f, 0f, 0f, 0f}; // mp, st, atk, def
 
     // Start is called before the first frame update
     void Start()
     {
-        enemySelected = 0;
-        Instantiate(cursor, new Vector3(5.82f, -2.77f), Quaternion.identity);
+
         currentBattleState = BattleState.WAITING;
         character.currentHP = character.baseHP;
         character.currentMP = character.baseMP;
@@ -45,16 +44,18 @@ public class HeroStateMachine : MonoBehaviour
         character.currentAttack = character.attack;
         character.currentDefense = character.defense;
         StartCoroutine(RecoverST(character));
+        previousTemperatureState = TemperatureState.UNASSIGNED;
     }
 
-    int attackSelected;
     // Update is called once per frame
     void Update()
     {
-
+        character.currentAttack = character.attack * (1+temperatureModifiers[2]);
+        character.currentDefense = character.defense * (1+temperatureModifiers[3]);
         switch (currentBattleState)
         {
             case (BattleState.WAITING):
+                /*
                 if (Input.GetKeyDown("1"))
                 {
                     currentBattleState = BattleState.ACTION;
@@ -70,6 +71,7 @@ public class HeroStateMachine : MonoBehaviour
                     currentBattleState = BattleState.ACTION;
                     StartCoroutine(Attacking(character.attacks[2], enemies[enemySelected], character));
                 }
+                */
                 break;
             case (BattleState.ACTION):
 
@@ -84,30 +86,92 @@ public class HeroStateMachine : MonoBehaviour
 
         switch (character.temperature)
         {
-            case 70:
+            case >=70:
                 currentTemperatureState = TemperatureState.SCORCHING;
+                if (previousTemperatureState != currentTemperatureState)
+                {
+                    temperatureModifiers[0] = 0f;
+                    temperatureModifiers[1] = 0f;
+                    temperatureModifiers[2] = 0f;
+                    temperatureModifiers[3] = 0f;
+                    StartCoroutine(Scorching());
+                    previousTemperatureState = currentTemperatureState;
+                }
             break;
             case >=56 and <=69:
                 currentTemperatureState = TemperatureState.HIGH;
+                if (previousTemperatureState != currentTemperatureState)
+                {
+                    temperatureModifiers[0] = -0.5f;
+                    temperatureModifiers[1] = 0f;
+                    temperatureModifiers[2] = 0f;
+                    temperatureModifiers[3] = -0.5f;
+                    previousTemperatureState = currentTemperatureState;
+                }
                 break;
             case >= 41 and <= 55:
                 currentTemperatureState = TemperatureState.MODERATE;
+                if (previousTemperatureState != currentTemperatureState)
+                {
+                    temperatureModifiers[0] = 0f;
+                    temperatureModifiers[1] = -0.5f;
+                    temperatureModifiers[2] = 0f;
+                    temperatureModifiers[3] = 0f;
+                    previousTemperatureState = currentTemperatureState;
+                }
                 break;
             case >= 31 and <= 40:
                 currentTemperatureState = TemperatureState.REGULAR;
+                if (previousTemperatureState != currentTemperatureState)
+                {
+                    temperatureModifiers[0] = 0.5f;
+                    temperatureModifiers[1] = 0.5f;
+                    temperatureModifiers[2] = 0.5f;
+                    temperatureModifiers[3] = 0.5f;
+                    previousTemperatureState = currentTemperatureState;
+                }
                 break;
             case >= 16 and <= 30:
                 currentTemperatureState = TemperatureState.REDUCED;
+                if (previousTemperatureState != currentTemperatureState)
+                {
+                    temperatureModifiers[0] = 0f;
+                    temperatureModifiers[1] = -0.5f;
+                    temperatureModifiers[2] = 0f;
+                    temperatureModifiers[3] = 0f;
+                    previousTemperatureState = currentTemperatureState;
+                }
                 break;
             case >= 1 and <= 15:
                 currentTemperatureState = TemperatureState.LOW;
+                if (previousTemperatureState != currentTemperatureState)
+                {
+                    temperatureModifiers[0] = 0f;
+                    temperatureModifiers[1] = 0f;
+                    temperatureModifiers[2] = -0.5f;
+                    temperatureModifiers[3] = -0.5f;
+                    previousTemperatureState = currentTemperatureState;
+                }
                 break;
-            case 0:
+            case <=0:
                 currentTemperatureState = TemperatureState.FREEZING;
+                if (previousTemperatureState != currentTemperatureState)
+                {
+                    temperatureModifiers[0] = -0.5f;
+                    temperatureModifiers[1] = -0.5f;
+                    temperatureModifiers[2] = -0.5f;
+                    temperatureModifiers[3] = -0.5f;
+                    previousTemperatureState = currentTemperatureState;
+                    StartCoroutine(Freezing());
+                }
                 break;
         }
 
-        
+        if (character.currentST <= 0)
+        {
+            currentBattleState = BattleState.TIRED;
+        }
+        /*
         if (Input.GetKeyDown("j"))
         {
             enemySelected = 0;
@@ -132,11 +196,11 @@ public class HeroStateMachine : MonoBehaviour
             Destroy(GameObject.FindGameObjectWithTag("Cursor"));
             Instantiate(cursor, new Vector3(5.71f, 0.25f), Quaternion.identity);
         }
-
+        */
         
 
     }
-
+    /*
     IEnumerator Attacking(Attack attack,EnemyStateMachine enemy,PersonajeBase character)
     {
         character.currentST -= attack.ST;
@@ -169,6 +233,34 @@ public class HeroStateMachine : MonoBehaviour
         Debug.Log(attack);
         Debug.Log(defense);
         return baseAttack * (defense / 100) / (attack / 50);
+    }
+    */
+
+    IEnumerator Freezing()
+    {
+        while (currentBattleState != BattleState.WAITING)
+        {
+            yield return null;
+        }
+        currentBattleState = BattleState.TIRED;
+        for(float i=0f; i < 3; i += Time.deltaTime)
+        {
+            yield return null;
+        }
+        currentBattleState = BattleState.WAITING;
+        yield return null;
+    }
+
+    IEnumerator Scorching()
+    {
+        float dmg = 0f;
+        while (currentTemperatureState == TemperatureState.SCORCHING)
+        {
+            dmg += 0.0001f* Time.deltaTime;
+            character.currentHP -= dmg;
+            yield return null;
+
+        }
     }
 
     IEnumerator RecoverST(PersonajeBase character)

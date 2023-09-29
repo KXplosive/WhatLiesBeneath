@@ -941,6 +941,7 @@ MonoBehaviour:
     currentAttack: 0
     Defense: 60
     currentDefense: 0
+  currentBattleState: 0
 --- !u!212 &845269088
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1288,6 +1289,7 @@ MonoBehaviour:
     currentAttack: 0
     Defense: 10
     currentDefense: 0
+  currentBattleState: 0
 --- !u!212 &1258558824
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1393,6 +1395,7 @@ MonoBehaviour:
     currentAttack: 0
     Defense: 10
     currentDefense: 0
+  currentBattleState: 0
 --- !u!212 &1277200697
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1890,6 +1893,7 @@ MonoBehaviour:
     currentAttack: 0
     Defense: 30
     currentDefense: 0
+  currentBattleState: 0
 --- !u!212 &1812754624
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2045,6 +2049,7 @@ GameObject:
   - component: {fileID: 1911527959}
   - component: {fileID: 1911527958}
   - component: {fileID: 1911527962}
+  - component: {fileID: 1911527963}
   m_Layer: 6
   m_Name: Player1
   m_TagString: Player
@@ -2093,7 +2098,7 @@ MonoBehaviour:
       ST: 20
       temperatureChange: -5
     - name: Strong Slash
-      baseDamage: 40
+      baseDamage: 200
       startup: 2.5
       ending: 2.5
       MP: 0
@@ -2190,6 +2195,25 @@ MonoBehaviour:
   manaBar: {fileID: 1612269793}
   staminaBar: {fileID: 875538978}
   heroStateMachine: {fileID: 1911527958}
+--- !u!114 &1911527963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911527957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a46f32d437334e969dcf655af505e93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateMachine: {fileID: 1911527958}
+  enemies:
+  - {fileID: 1812754623}
+  - {fileID: 845269087}
+  - {fileID: 1258558823}
+  - {fileID: 1277200696}
+  cursor: {fileID: 5524555241018301975, guid: 6656bed249f0942db8c872f00574ef9b, type: 3}
 --- !u!1 &1943840345
 GameObject:
   m_ObjectHideFlags: 0
