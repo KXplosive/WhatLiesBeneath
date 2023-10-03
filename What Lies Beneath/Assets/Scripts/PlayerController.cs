@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public HeroStateMachine stateMachine;
-    public EnemyStateMachine[] enemies;
+    public GameObject[] enemies;
     public GameObject cursor;
+    EnemyStateMachine[] enemiesState;
 
     PersonajeBase character;
     int enemySelected;
@@ -16,6 +17,11 @@ public class PlayerController : MonoBehaviour
     {
         enemySelected=-1;
         character = stateMachine.character;
+        enemiesState = new EnemyStateMachine[enemies.Length];
+        for(int i = 0; i < enemies.Length; i++)
+        {
+            enemiesState[i] = enemies[i].GetComponent<EnemyStateMachine>();
+        }
     }
 
     // Update is called once per frame
@@ -25,57 +31,57 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown("j"))
             {
-                if (enemies[0].currentBattleState != EnemyStateMachine.BattleState.DEAD)
+                if (enemiesState[0].currentBattleState != EnemyStateMachine.BattleState.DEAD)
                 {
                     enemySelected = 0;
                     Destroy(GameObject.FindGameObjectWithTag("Cursor"));
-                    Instantiate(cursor, new Vector3(5.82f, -2.77f), Quaternion.identity);
+                    Instantiate(cursor, new Vector3(enemies[enemySelected].transform.position.x, enemies[enemySelected].transform.position.y), Quaternion.identity);
                 }
             }
             else if (Input.GetKeyDown("i"))
             {
-                if (enemies[1].currentBattleState != EnemyStateMachine.BattleState.DEAD)
+                if (enemiesState[1].currentBattleState != EnemyStateMachine.BattleState.DEAD)
                 {
                     enemySelected = 1;
                     Destroy(GameObject.FindGameObjectWithTag("Cursor"));
-                    Instantiate(cursor, new Vector3(1.51f, -3.01f), Quaternion.identity);
+                    Instantiate(cursor, new Vector3(enemies[enemySelected].transform.position.x, enemies[enemySelected].transform.position.y), Quaternion.identity);
                 }
 
             }
             else if (Input.GetKeyDown("o"))
             {
-                if (enemies[2].currentBattleState != EnemyStateMachine.BattleState.DEAD)
+                if (enemiesState[2].currentBattleState != EnemyStateMachine.BattleState.DEAD)
                 {
                     enemySelected = 2;
                     Destroy(GameObject.FindGameObjectWithTag("Cursor"));
-                    Instantiate(cursor, new Vector3(1.34f, 0.15f), Quaternion.identity);
+                    Instantiate(cursor, new Vector3(enemies[enemySelected].transform.position.x, enemies[enemySelected].transform.position.y), Quaternion.identity);
                 }
 
             }
             else if (Input.GetKeyDown("p"))
             {
-                if (enemies[2].currentBattleState != EnemyStateMachine.BattleState.DEAD)
+                if (enemiesState[2].currentBattleState != EnemyStateMachine.BattleState.DEAD)
                 {
                     enemySelected = 3;
                     Destroy(GameObject.FindGameObjectWithTag("Cursor"));
-                    Instantiate(cursor, new Vector3(5.71f, 0.25f), Quaternion.identity);
+                    Instantiate(cursor, new Vector3(enemies[enemySelected].transform.position.x, enemies[enemySelected].transform.position.y), Quaternion.identity);
                 }
             }
 
             if (Input.GetKeyDown("1") && enemySelected!=-1)
             {
                 stateMachine.currentBattleState = HeroStateMachine.BattleState.ACTION;
-                StartCoroutine(Attacking(character.attacks[0], enemies[enemySelected]));
+                StartCoroutine(Attacking(character.attacks[0], enemiesState[enemySelected]));
             }
             else if (Input.GetKeyDown("2") && enemySelected != -1)
             {
                 stateMachine.currentBattleState = HeroStateMachine.BattleState.ACTION;
-                StartCoroutine(Attacking(character.attacks[1], enemies[enemySelected]));
+                StartCoroutine(Attacking(character.attacks[1], enemiesState[enemySelected]));
             }
             else if (Input.GetKeyDown("3") && enemySelected != -1)
             {
                 stateMachine.currentBattleState = HeroStateMachine.BattleState.ACTION;
-                StartCoroutine(Attacking(character.attacks[2], enemies[enemySelected]));
+                StartCoroutine(Attacking(character.attacks[2], enemiesState[enemySelected]));
             }
             
         }
