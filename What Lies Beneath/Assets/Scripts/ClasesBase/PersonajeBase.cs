@@ -7,7 +7,7 @@ public class PersonajeBase
 {
     public string nombre;
 
-    private int level;
+    public int level;
 
     public float baseHP;
     public float currentHP;
