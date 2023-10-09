@@ -9,7 +9,7 @@ public class EnemyBase
 
     public float currentHP;
     public float baseHP;
-
+    public float stamina = 100 - (5*Variables.contNivel); // tiempo de atb
     public float Attack;
     public float currentAttack;
     public float Defense;

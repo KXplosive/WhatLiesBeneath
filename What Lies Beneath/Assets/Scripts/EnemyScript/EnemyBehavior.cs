@@ -2,18 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehavior : MonoBehaviour {
-    public BaseEnemy enemy;
+public abstract class EnemyBehavior 
+{
+    public abstract void EnterState(Enemy enemy);
+    public abstract void Update(Enemy enemy);
+    public abstract void LateUpdate(Enemy enemy);
+    public abstract void ExitState(Enemy enemy);
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

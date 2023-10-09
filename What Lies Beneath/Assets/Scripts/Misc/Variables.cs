@@ -23,5 +23,6 @@ public class Variables : MonoBehaviour
     public static int contNivel = 0;
     public static int contEventos = 0;
     public static int auxEventoPasado;
+    public static int contEnemigos = 0;
 
 }
