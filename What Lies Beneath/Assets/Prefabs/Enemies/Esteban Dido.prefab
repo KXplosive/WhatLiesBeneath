@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 759939929321552248}
   - component: {fileID: 759939929321552249}
   m_Layer: 6
-  m_Name: Enano
+  m_Name: Esteban Dido
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy:
-    nombre: Enano
+    nombre: Esteban Dido
     currentHP: 0
     baseHP: 100
     Attack: 50

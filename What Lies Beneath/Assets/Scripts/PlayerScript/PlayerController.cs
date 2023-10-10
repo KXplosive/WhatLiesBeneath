@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         if (stateMachine.currentBattleState == HeroStateMachine.BattleState.WAITING)
         {
-            if (Input.GetKeyDown("j"))
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 if (enemiesState[0].currentBattleState != EnemyStateMachine.BattleState.DEAD)
                 {
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
                     Instantiate(cursor, new Vector3(enemies[enemySelected].transform.position.x, enemies[enemySelected].transform.position.y), Quaternion.identity);
                 }
             }
-            else if (Input.GetKeyDown("i"))
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 if (enemiesState[1].currentBattleState != EnemyStateMachine.BattleState.DEAD)
                 {
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
                 }
 
             }
-            else if (Input.GetKeyDown("o"))
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 if (enemiesState[2].currentBattleState != EnemyStateMachine.BattleState.DEAD)
                 {
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
                 }
 
             }
-            else if (Input.GetKeyDown("p"))
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 if (enemiesState[2].currentBattleState != EnemyStateMachine.BattleState.DEAD)
                 {

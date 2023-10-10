@@ -2,4 +2,5 @@
     <uie:PropertyField label="Clase Padre" binding-path="parentEnemies" name="parentEnemies" />
     <uie:PropertyField binding-path="enemyGroups" label="Equipos de enemigos" name="EnemyGroups" />
     <uie:PropertyField name="enemiesSelected" label="Grupo Seleccionado" binding-path="enemiesSelected" />
+    <uie:PropertyField name="nextbutton" binding-path="nextButton" label="Next Button" />
 </ui:UXML>

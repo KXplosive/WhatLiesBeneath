@@ -32,6 +32,7 @@ public class EnemyStateMachine : MonoBehaviour
         {
             currentBattleState = BattleState.DEAD;
             GetComponent<Renderer>().material.color = new Color ( 0.5f, 0.5f, 0.5f,1f);
+            Destroy(gameObject,4);
         }
     }
 }
