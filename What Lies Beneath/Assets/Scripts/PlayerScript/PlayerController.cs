@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         enemySelected=-1;
         character = stateMachine.character;
         enemiesState = new EnemyStateMachine[enemies.Length];
