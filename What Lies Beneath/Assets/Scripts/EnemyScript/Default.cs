@@ -24,7 +24,7 @@ public class Default : EnemyBehavior
     public override void Update(Enemy enemy)
     {
         // ir de spawn point a posicion de enemigo y regresar a spawn point tras regresar a spawn llamar funcion
-        // Animcacion: Idle -> EndOfEnemyTurn
+        // Animcacion: Idle -> Movimiento -> Attaque -> Movimiento -> Idle -> EndOfEnemyTurn
         // if (moving) {
             // if (lista en punto del target) llamar corutina
             // if (lista en punto de spawn) EndOfEnemyTurn

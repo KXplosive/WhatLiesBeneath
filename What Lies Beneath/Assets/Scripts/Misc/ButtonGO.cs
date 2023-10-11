@@ -21,18 +21,24 @@ public class ButtonGO : MonoBehaviour
             Variables.contNivel++;
         }
 
-        if(Variables.contEventos == 6 && Variables.auxEventoPasado == 0)
+        if(Variables.contEventos == 5 && Variables.auxEventoPasado == 0)
         {
-            SceneManager.LoadScene("Boss");
-            Variables.contEventos = 0;
-            Variables.contPosNeg = 0;
+            SceneManager.LoadScene(Variables.arrNeg[(Variables.contNivel - 1), escenaNum]);
             escenaPosNeg = 1;
         }
 
-        else if(Variables.contEventos == 6 && Variables.auxEventoPasado == 1)
+        else if(Variables.contEventos == 5 && Variables.auxEventoPasado == 1)
         {
+            Variables.contEventos++;
             SceneManager.LoadScene("Descanso");
             escenaPosNeg = 0;
+        }
+
+        else if(Variables.contEventos == 6)
+        {
+            SceneManager.LoadScene("Boss");
+            Variables.contEventos = 0;
+            Variables.contPosNeg = 2;
         }
         
         else if(Variables.contPosNeg == 2)

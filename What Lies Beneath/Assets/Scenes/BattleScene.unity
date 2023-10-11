@@ -402,6 +402,7 @@ MonoBehaviour:
     currentAttack: 0
     Defense: 60
     currentDefense: 0
+  buttonNext: {fileID: 773496964}
   currentBattleState: 0
 --- !u!212 &362786640
 SpriteRenderer:
@@ -509,6 +510,7 @@ MonoBehaviour:
     currentAttack: 0
     Defense: 10
     currentDefense: 0
+  buttonNext: {fileID: 773496964}
   currentBattleState: 0
 --- !u!212 &454566555
 SpriteRenderer:
@@ -1270,6 +1272,7 @@ MonoBehaviour:
     currentAttack: 0
     Defense: 10
     currentDefense: 0
+  buttonNext: {fileID: 773496964}
   currentBattleState: 0
 --- !u!212 &774950840
 SpriteRenderer:
@@ -2974,6 +2977,7 @@ MonoBehaviour:
     currentAttack: 0
     Defense: 30
     currentDefense: 0
+  buttonNext: {fileID: 773496964}
   currentBattleState: 0
 --- !u!212 &1830216105
 SpriteRenderer:

@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyStateMachine : MonoBehaviour
 {
     public EnemyBase enemy;
+    public GameObject buttonNext;
     public enum BattleState
     {
         ACTIONABLE,
@@ -34,7 +35,8 @@ public class EnemyStateMachine : MonoBehaviour
             Variables.contEnemigos--;
             if (Variables.contEnemigos == 0)
             {
-
+                Variables.contEnemigos = 4;
+                buttonNext.SetActive (true);
             }
         }
     }

@@ -19,10 +19,10 @@ public class Variables : MonoBehaviour
         , { "Descanso", "Cofre", "Tienda" }
         , { "Descanso", "Descanso", "Tienda" } };
 
-    public static int contPosNeg = 2;
+    public static int contPosNeg = 0;
     public static int contNivel = 0;
     public static int contEventos = 0;
     public static int auxEventoPasado;
-    public static int contEnemigos = 0;
+    public static int contEnemigos = 4;
 
 }
