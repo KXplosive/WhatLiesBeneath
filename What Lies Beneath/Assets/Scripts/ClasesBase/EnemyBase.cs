@@ -14,4 +14,5 @@ public class EnemyBase
     public float currentAttack;
     public float Defense;
     public float currentDefense;
+    public float stamina;
 }

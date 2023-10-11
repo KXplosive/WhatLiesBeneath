@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyStateMachine : MonoBehaviour
 {
     public EnemyBase enemy;
-
+    public GameObject buttonNext;
     public enum BattleState
     {
         ACTIONABLE,
@@ -32,7 +32,12 @@ public class EnemyStateMachine : MonoBehaviour
         {
             currentBattleState = BattleState.DEAD;
             GetComponent<Renderer>().material.color = new Color ( 0.5f, 0.5f, 0.5f,1f);
-            Destroy(gameObject,4);
+            Variables.contEnemigos--;
+            if (Variables.contEnemigos == 0)
+            {
+                Variables.contEnemigos = 4;
+                buttonNext.SetActive (true);
+            }
         }
     }
 }
