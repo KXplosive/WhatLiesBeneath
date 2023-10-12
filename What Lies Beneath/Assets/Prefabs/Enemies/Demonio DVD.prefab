@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2122281401279566692}
   - component: {fileID: 2122281401279566693}
   - component: {fileID: 2122281401279566698}
-  - component: {fileID: 5737654835433911431}
   m_Layer: 6
   m_Name: Demonio DVD
   m_TagString: Enemy
@@ -106,29 +105,4 @@ MonoBehaviour:
     currentAttack: 0
     Defense: 10
     currentDefense: 0
-    stamina: 0
-  buttonNext: {fileID: 0}
   currentBattleState: 0
---- !u!114 &5737654835433911431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122281401279566699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0c7b775069a71e40a8697b749d3f8e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyBase:
-    nombre: 
-    currentHP: 0
-    baseHP: 0
-    Attack: 0
-    currentAttack: 0
-    Defense: 0
-    currentDefense: 0
-    stamina: 0
-  ec: {fileID: 0}
-  animator: {fileID: 0}
