@@ -9,11 +9,10 @@ public class Default : EnemyBehavior
     {
         GameObject[] attackPlayer = GameObject.FindGameObjectsWithTag("Player");
         // buscar target para ataque
-<<<<<<< Updated upstream
-=======
+
         int whichPlayer = Random.Range(0, attackPlayer.Length);
         // target es attackPlayer[whichPlayer]
->>>>>>> Stashed changes
+
         // tras encontrarlo sacar duracion de la corutina
         // duracion es EnemyBase.stamina
         // activa animacion de moving
