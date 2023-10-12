@@ -14,8 +14,5 @@ public class EnemyBase
     public float currentAttack;
     public float Defense;
     public float currentDefense;
-<<<<<<< Updated upstream
-=======
-    public float stamina = 100;
->>>>>>> Stashed changes
+    // public float stamina = 100;
 }
