@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class Default : EnemyBehavior
 {
+
     public override void EnterState(Enemy enemy)
     {
+        GameObject[] attackPlayer = GameObject.FindGameObjectsWithTag("Player");
         // buscar target para ataque
+<<<<<<< Updated upstream
+=======
+        int whichPlayer = Random.Range(0, attackPlayer.Length);
+        // target es attackPlayer[whichPlayer]
+>>>>>>> Stashed changes
         // tras encontrarlo sacar duracion de la corutina
+        // duracion es EnemyBase.stamina
         // activa animacion de moving
     }
 
@@ -23,7 +31,7 @@ public class Default : EnemyBehavior
 
     public override void Update(Enemy enemy)
     {
-        // ir de spawn point a posicion de enemigo y regresar a spawn point tras regresar a spawn llamar funcion
+        // ir de spawn point a posicion de enemigo y regresar a spawn point tras regresar a spawn llamar funcion EndOfEnemyTurn
         // Animcacion: Idle -> Movimiento -> Attaque -> Movimiento -> Idle -> EndOfEnemyTurn
         // if (moving) {
             // if (lista en punto del target) llamar corutina

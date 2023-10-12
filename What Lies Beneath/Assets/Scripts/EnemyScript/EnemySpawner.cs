@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+<<<<<<< Updated upstream
     public EnemyGroup[] enemyGroups;
     public EnemyGroup enemies;
+=======
+    //public EnemyGroup[] enemyGroups;
+    public EnemyGroup enemiesSelected;
+    public GameObject nextButton;
+
+    Vector3[] positions = {new Vector3 (2f, -1.5f), new Vector3 (4.2f, 0f), new Vector3 (5f, -3f), new Vector3 (7.25f, -1.5f)};
+>>>>>>> Stashed changes
     // HACER UN CUSTOM INSPECTOR PARA ESTA CLASE
 
     int numOrdas;
@@ -29,11 +38,58 @@ public class EnemySpawner : MonoBehaviour
         {
             Debug.Log("HEY, ALGO MALO PASO AQUI");
         }
+<<<<<<< Updated upstream
+=======
+        // spawnear a los enemgos
+        for (int i = 0; i < enemiesSelected.enemies.Length; i++)
+        {
+            Instantiate(enemiesSelected.enemies[i], positions[i],Quaternion.identity);
+        }
+        numOrdas -= 1;
+>>>>>>> Stashed changes
     }
 
     // Update is called once per frame
     void Update()
     {
+<<<<<<< Updated upstream
         
+=======
+        /*
+        if (numOrdas > 0)// y tondos los enemigos estan muertos
+        {
+            for (int i = 0; i < enemiesSelected.enemies.Length; i++)
+            {
+                Instantiate(enemiesSelected.enemies[i]);
+            }
+        }
+        else
+        {
+            //ganar encuentro
+        }
+        */
+        if (!enemiesAlive()){
+            nextButton.SetActive(true);
+        }
+    }
+
+    public List<Enemy> GetEnemies(EnemyController ec)
+    {
+        List<Enemy> listaEnemies = new List<Enemy>();
+        GameObject[] GO = enemiesSelected.enemies;
+        for(int i = 0; i < GO.Length; i++)
+        {
+            var enemy = GO[i].GetComponent<Enemy>();
+            enemy.ec = ec;
+            var reference = Instantiate(GO[i], positions[i], Quaternion.identity);
+            listaEnemies.Add(enemy);
+        }
+        return listaEnemies;
+    }
+
+    bool enemiesAlive()
+    {
+        return GameObject.FindGameObjectsWithTag("Enemy").Length >= 1;
+>>>>>>> Stashed changes
     }
 }
