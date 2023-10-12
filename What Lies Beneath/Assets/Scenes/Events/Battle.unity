@@ -1262,12 +1262,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 935336567}
-  enemies:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   cursor: {fileID: 5524555241018301975, guid: 6656bed249f0942db8c872f00574ef9b, type: 3}
+  distanciaEnemigos: 0
 --- !u!1 &1026980300
 GameObject:
   m_ObjectHideFlags: 0

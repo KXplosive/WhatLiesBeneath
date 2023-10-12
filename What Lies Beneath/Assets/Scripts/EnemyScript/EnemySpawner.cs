@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public EnemyGroup enemiesSelected;
     public GameObject nextButton;
 
-    float[,] positions = new float[4, 2] { { 2f,-1.5f} ,{4.2f,0f },{5f,-3f },{7.25f,-1.5f } };
+    Vector3[] positions = { new Vector3(2f, -1.5f), new Vector3(4.2f, 0f), new Vector3(5f, -3f), new Vector3(7.25f, -1.5f) };
     // HACER UN CUSTOM INSPECTOR PARA ESTA CLASE
 
     int numOrdas;
@@ -37,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
         // spawnear a los enemgos
         for (int i = 0; i < enemiesSelected.enemies.Length; i++)
         {
-            Instantiate(enemiesSelected.enemies[i],new Vector3(positions[i,0],positions[i,1]),Quaternion.identity);
+            Instantiate(enemiesSelected.enemies[i],positions[i],Quaternion.identity);
         }
         numOrdas -= 1;
     }

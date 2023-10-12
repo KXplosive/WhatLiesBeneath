@@ -5,12 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public HeroStateMachine stateMachine;
-    public GameObject[] enemies;
+    GameObject[] enemies;
     public GameObject cursor;
     EnemyStateMachine[] enemiesState;
 
     PersonajeBase character;
     int enemySelected;
+    public float distanciaEnemigos;
 
     // Start is called before the first frame update
     void Start()
@@ -72,42 +73,142 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown("1") && enemySelected!=-1)
             {
                 stateMachine.currentBattleState = HeroStateMachine.BattleState.ACTION;
-                StartCoroutine(Attacking(character.attacks[0], enemiesState[enemySelected]));
+                StartCoroutine(Attacking(character.attacks[0], enemies[enemySelected]));
             }
             else if (Input.GetKeyDown("2") && enemySelected != -1)
             {
                 stateMachine.currentBattleState = HeroStateMachine.BattleState.ACTION;
-                StartCoroutine(Attacking(character.attacks[1], enemiesState[enemySelected]));
+                StartCoroutine(Attacking(character.attacks[1], enemies[enemySelected]));
             }
             else if (Input.GetKeyDown("3") && enemySelected != -1)
             {
                 stateMachine.currentBattleState = HeroStateMachine.BattleState.ACTION;
-                StartCoroutine(Attacking(character.attacks[2], enemiesState[enemySelected]));
+                StartCoroutine(Attacking(character.attacks[2], enemies[enemySelected]));
             }
             
         }
        
     }
 
-    IEnumerator Attacking(Attack attack, EnemyStateMachine enemy)
+    IEnumerator Attacking(Attack attack, GameObject enemy)
     {
         stateMachine.character.currentST -= attack.ST * (-0.5f*stateMachine.temperatureModifiers[1]);
         stateMachine.character.temperature += attack.temperatureChange;
-        for (float i = 0f; i <= attack.startup; i += 1 * Time.deltaTime)
+        EnemyStateMachine enemyState = enemy.GetComponent<EnemyStateMachine>();
+        Vector3 ogPosition = gameObject.transform.position;
+        float posX;
+        float posY;
+        float speed = 10f;
+
+        // el jugador se mueve hacia el enemigo
+        while (gameObject.transform.position.x < enemy.transform.position.x - distanciaEnemigos && gameObject.transform.position.y != enemy.transform.position.y)
         {
+            if(gameObject.transform.position.x < enemy.transform.position.x - distanciaEnemigos)
+            {
+                posX = gameObject.transform.position.x + speed * Time.deltaTime;
+            }
+            else
+            {
+                posX = gameObject.transform.position.x;
+            }
+            if(gameObject.transform.position.y < enemy.transform.position.y)
+            {
+                posY = gameObject.transform.position.y + speed * Time.deltaTime;
+            } else if (gameObject.transform.position.y > enemy.transform.position.y)
+            {
+                posY = gameObject.transform.position.y - speed * Time.deltaTime;
+            }
+            else
+            {
+                posY = gameObject.transform.position.y;
+            }
+            gameObject.transform.position = new Vector3(posX, posY);
             yield return null;
+
         }
-        enemy.enemy.currentHP -= DamageCalc(stateMachine.character.currentAttack, enemy.enemy.currentDefense, attack.baseDamage);
-        yield return null;
-        if (enemy.currentBattleState == EnemyStateMachine.BattleState.DEAD)
+
+        // el jugador realiza el ataque
+        enemyState.enemy.currentHP -= DamageCalc(stateMachine.character.currentAttack, enemyState.enemy.currentDefense, attack.baseDamage);
+        if (enemyState.currentBattleState == EnemyStateMachine.BattleState.DEAD)
         {
             enemySelected = -1;
             Destroy(GameObject.FindGameObjectWithTag("Cursor"));
 
         }
-        for (float i = 0f; i <= attack.ending; i += 1 * Time.deltaTime)
+        yield return null;
+        for (float i = 0; i<3;i += Time.deltaTime)
         {
             yield return null;
+        }
+
+        float distX = Mathf.Abs(gameObject.transform.position.x - ogPosition.x)*5;
+        float distY = Mathf.Abs(gameObject.transform.position.y - ogPosition.y)*5;
+        //posX = Mathf.Abs(gameObject.transform.position.x - ogPosition.x);
+        //posY = Mathf.Abs(gameObject.transform.position.y - ogPosition.y);
+        // el jugador regresa a la posicion original
+        while (gameObject.transform.position.x != ogPosition.x && gameObject.transform.position.y != ogPosition.y)
+        {
+            /*
+            if (gameObject.transform.position.x > ogPosition.x)
+            {
+                posX = gameObject.transform.position.x - speed * Time.deltaTime;
+            }
+            else
+            {
+                posX = gameObject.transform.position.x;
+            }
+            if (gameObject.transform.position.y < enemy.transform.position.y)
+            {
+                posY = gameObject.transform.position.y + speed * Time.deltaTime;
+            }
+            else if (gameObject.transform.position.y > enemy.transform.position.y)
+            {
+                posY = gameObject.transform.position.y - speed * Time.deltaTime;
+            }
+            else
+            {
+                posY = gameObject.transform.position.y;
+            }
+            gameObject.transform.position = new Vector3(posX, posY);
+            */
+            posX = gameObject.transform.position.x - distX * Time.deltaTime;
+            if (posX < ogPosition.x)
+            {
+                posX = ogPosition.x;
+            }
+            if (gameObject.transform.position.y > ogPosition.y)
+            {
+                posY = gameObject.transform.position.y - distY * Time.deltaTime;
+                if(posY< ogPosition.y)
+                {
+                    posY = ogPosition.y;
+                }
+            }else if (gameObject.transform.position.y < ogPosition.y)
+            {
+                posY = gameObject.transform.position.y + distY * Time.deltaTime;
+                if (posY > ogPosition.y)
+                {
+                    posY = ogPosition.y;
+                }
+            }
+            else
+            {
+                posY = ogPosition.y;
+            }
+            gameObject.transform.position = new Vector3(posX, posY);
+            /*
+            if (gameObject.transform.position.y > ogPosition.y)
+            {
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x - posX * Time.deltaTime, gameObject.transform.position.y - posY * Time.deltaTime);
+            }
+            else
+            {
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x - posX * Time.deltaTime, gameObject.transform.position.y + posY * Time.deltaTime);
+            }
+            */
+
+            yield return null;
+
         }
 
         if (stateMachine.currentBattleState != HeroStateMachine.BattleState.TIRED)
