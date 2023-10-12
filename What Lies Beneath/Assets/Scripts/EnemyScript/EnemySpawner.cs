@@ -5,24 +5,24 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-<<<<<<< Updated upstream
+/*
     public EnemyGroup[] enemyGroups;
-    public EnemyGroup enemies;
-=======
+    public EnemyGroup enemies;*/
+
     //public EnemyGroup[] enemyGroups;
     public EnemyGroup enemiesSelected;
     public GameObject nextButton;
 
     Vector3[] positions = {new Vector3 (2f, -1.5f), new Vector3 (4.2f, 0f), new Vector3 (5f, -3f), new Vector3 (7.25f, -1.5f)};
->>>>>>> Stashed changes
+
     // HACER UN CUSTOM INSPECTOR PARA ESTA CLASE
 
-    int numOrdas;
+    // int numOrdas;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (enemies.Type == EnemyGroup.groupType.COMBATE)
+        /*if (enemies.Type == EnemyGroup.groupType.COMBATE)
         {
             numOrdas = 1;
         }
@@ -37,24 +37,21 @@ public class EnemySpawner : MonoBehaviour
         else
         {
             Debug.Log("HEY, ALGO MALO PASO AQUI");
-        }
-<<<<<<< Updated upstream
-=======
+        }*/
+
+
         // spawnear a los enemgos
-        for (int i = 0; i < enemiesSelected.enemies.Length; i++)
+        /*for (int i = 0; i < enemiesSelected.enemies.Length; i++)
         {
             Instantiate(enemiesSelected.enemies[i], positions[i],Quaternion.identity);
         }
-        numOrdas -= 1;
->>>>>>> Stashed changes
+        numOrdas -= 1;*/
+
     }
 
     // Update is called once per frame
     void Update()
     {
-<<<<<<< Updated upstream
-        
-=======
         /*
         if (numOrdas > 0)// y tondos los enemigos estan muertos
         {
@@ -68,9 +65,9 @@ public class EnemySpawner : MonoBehaviour
             //ganar encuentro
         }
         */
-        if (!enemiesAlive()){
+        /*if (!enemiesAlive()){
             nextButton.SetActive(true);
-        }
+        }*/
     }
 
     public List<Enemy> GetEnemies(EnemyController ec)
@@ -90,6 +87,5 @@ public class EnemySpawner : MonoBehaviour
     bool enemiesAlive()
     {
         return GameObject.FindGameObjectsWithTag("Enemy").Length >= 1;
->>>>>>> Stashed changes
     }
 }
