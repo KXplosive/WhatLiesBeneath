@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
                     Instantiate(cursor, new Vector3(enemies[enemySelected].transform.position.x, enemies[enemySelected].transform.position.y), Quaternion.identity);
                 }
             }
-
+            //Input.GetButton("Fire1");
             if (Input.GetKeyDown("1") && enemySelected!=-1)
             {
                 stateMachine.currentBattleState = HeroStateMachine.BattleState.ACTION;
@@ -143,34 +143,10 @@ public class PlayerController : MonoBehaviour
 
         float distX = Mathf.Abs(gameObject.transform.position.x - ogPosition.x)*5;
         float distY = Mathf.Abs(gameObject.transform.position.y - ogPosition.y)*5;
-        //posX = Mathf.Abs(gameObject.transform.position.x - ogPosition.x);
-        //posY = Mathf.Abs(gameObject.transform.position.y - ogPosition.y);
+
         // el jugador regresa a la posicion original
         while (gameObject.transform.position.x != ogPosition.x && gameObject.transform.position.y != ogPosition.y)
         {
-            /*
-            if (gameObject.transform.position.x > ogPosition.x)
-            {
-                posX = gameObject.transform.position.x - speed * Time.deltaTime;
-            }
-            else
-            {
-                posX = gameObject.transform.position.x;
-            }
-            if (gameObject.transform.position.y < enemy.transform.position.y)
-            {
-                posY = gameObject.transform.position.y + speed * Time.deltaTime;
-            }
-            else if (gameObject.transform.position.y > enemy.transform.position.y)
-            {
-                posY = gameObject.transform.position.y - speed * Time.deltaTime;
-            }
-            else
-            {
-                posY = gameObject.transform.position.y;
-            }
-            gameObject.transform.position = new Vector3(posX, posY);
-            */
             posX = gameObject.transform.position.x - distX * Time.deltaTime;
             if (posX < ogPosition.x)
             {
@@ -196,16 +172,6 @@ public class PlayerController : MonoBehaviour
                 posY = ogPosition.y;
             }
             gameObject.transform.position = new Vector3(posX, posY);
-            /*
-            if (gameObject.transform.position.y > ogPosition.y)
-            {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x - posX * Time.deltaTime, gameObject.transform.position.y - posY * Time.deltaTime);
-            }
-            else
-            {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x - posX * Time.deltaTime, gameObject.transform.position.y + posY * Time.deltaTime);
-            }
-            */
 
             yield return null;
 

@@ -35,11 +35,11 @@ public class HeroStateMachine : MonoBehaviour
     public float[] temperatureModifiers = {0f, 0f, 0f, 0f}; // mp, st, atk, def
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-
         currentBattleState = BattleState.WAITING;
-        character.currentHP = character.baseHP;
+        character.currentHP = ScenesManager.currentHP;
+        character.temperature = ScenesManager.temperature;
         character.currentMP = character.baseMP;
         character.currentST = character.baseST;
         character.currentAttack = character.attack;
@@ -55,24 +55,9 @@ public class HeroStateMachine : MonoBehaviour
         character.currentDefense = character.defense * (1+temperatureModifiers[3]);
         switch (currentBattleState)
         {
+
             case (BattleState.WAITING):
-                /*
-                if (Input.GetKeyDown("1"))
-                {
-                    currentBattleState = BattleState.ACTION;
-                    StartCoroutine(Attacking(character.attacks[0],enemies[enemySelected],character));
-                }
-                if (Input.GetKeyDown("2"))
-                {
-                    currentBattleState = BattleState.ACTION;
-                    StartCoroutine(Attacking(character.attacks[1], enemies[enemySelected], character));
-                }
-                if (Input.GetKeyDown("3"))
-                {
-                    currentBattleState = BattleState.ACTION;
-                    StartCoroutine(Attacking(character.attacks[2], enemies[enemySelected], character));
-                }
-                */
+                
                 break;
             case (BattleState.ACTION):
 

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6680707677929387879}
   - component: {fileID: 6680707677929387878}
-  - component: {fileID: 6680707677929387897}
+  - component: {fileID: 4721103295519868766}
   m_Layer: 6
   m_Name: John Malo
   m_TagString: Enemy
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6680707677929387897
+--- !u!114 &4721103295519868766
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,15 +94,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6680707677929387896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cd33478c2939436dac83c2d6a336d84, type: 3}
+  m_Script: {fileID: 11500000, guid: ad4c40ecbfd1844e39d838d002b13b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy:
+  enemyBase:
     nombre: John Malo
-    currentHP: 100
+    currentHP: 0
     baseHP: 200
+    stamina: 100
     Attack: 20
     currentAttack: 0
     Defense: 60
     currentDefense: 0
-  currentBattleState: 0
+  attackDistance: 0

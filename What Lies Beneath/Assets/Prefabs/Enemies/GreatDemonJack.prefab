@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 1786814937353490322}
   - component: {fileID: 4507588674708383924}
   - component: {fileID: 3398845731362213818}
+  - component: {fileID: -4166534102175669139}
   m_Layer: 0
   m_Name: GreatDemonJack
   m_TagString: Enemy
@@ -147,6 +148,28 @@ MonoBehaviour:
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
+--- !u!114 &-4166534102175669139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27113556115759899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4c40ecbfd1844e39d838d002b13b6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyBase:
+    nombre: Great Demon Jack
+    currentHP: 0
+    baseHP: 300
+    stamina: 100
+    Attack: 50
+    currentAttack: 0
+    Defense: 0
+    currentDefense: 0
+  attackDistance: 0
 --- !u!1 &454498995427789882
 GameObject:
   m_ObjectHideFlags: 0

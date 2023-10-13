@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2122281401279566692}
   - component: {fileID: 2122281401279566693}
-  - component: {fileID: 2122281401279566698}
+  - component: {fileID: -7713936037281293768}
   m_Layer: 6
   m_Name: Demonio DVD
   m_TagString: Enemy
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2122281401279566698
+--- !u!114 &-7713936037281293768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,15 +94,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2122281401279566699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cd33478c2939436dac83c2d6a336d84, type: 3}
+  m_Script: {fileID: 11500000, guid: ad4c40ecbfd1844e39d838d002b13b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy:
+  enemyBase:
     nombre: Demonio DVD
     currentHP: 35
     baseHP: 35
+    stamina: 100
     Attack: 100
     currentAttack: 0
     Defense: 10
     currentDefense: 0
-  currentBattleState: 0
+  attackDistance: 0

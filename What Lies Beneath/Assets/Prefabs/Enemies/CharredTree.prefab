@@ -621,6 +621,7 @@ GameObject:
   - component: {fileID: 7367687341206336776}
   - component: {fileID: 6871055237856600059}
   - component: {fileID: 5015717176594308814}
+  - component: {fileID: 3150610523697149276}
   m_Layer: 0
   m_Name: CharredTree
   m_TagString: Enemy
@@ -740,6 +741,28 @@ MonoBehaviour:
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
+--- !u!114 &3150610523697149276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7014295009545314283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4c40ecbfd1844e39d838d002b13b6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyBase:
+    nombre: Charred Tree
+    currentHP: 0
+    baseHP: 30
+    stamina: 100
+    Attack: 20
+    currentAttack: 0
+    Defense: 30
+    currentDefense: 0
+  attackDistance: 0
 --- !u!1 &8186531223430185708
 GameObject:
   m_ObjectHideFlags: 0

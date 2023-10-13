@@ -732,6 +732,8 @@ GameObject:
   - component: {fileID: 183653764635099139}
   - component: {fileID: 183653764635099138}
   - component: {fileID: 183653764635099141}
+  - component: {fileID: -3604317744745883528}
+  - component: {fileID: 7873833700583660881}
   m_Layer: 0
   m_Name: Clyde
   m_TagString: Player
@@ -870,3 +872,52 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-3604317744745883528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7676013285262792864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80be77fb9415c4b0d8e6cdc922c9ea66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character:
+    nombre: Clyde
+    level: 1
+    baseHP: 100
+    currentHP: 0
+    baseMP: 100
+    currentMP: 0
+    baseST: 100
+    currentST: 0
+    temperature: 0
+    attack: 30
+    currentAttack: 0
+    defense: 30
+    currentDefense: 0
+    attacks: []
+  enemies: []
+  currentBattleState: 0
+  currentTemperatureState: 0
+  previousTemperatureState: 0
+  temperatureModifiers:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &7873833700583660881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7676013285262792864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d54e90d85d19b467a9b6c7bdc4e751af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursor: {fileID: 5524555241018301975, guid: 6656bed249f0942db8c872f00574ef9b, type: 3}
