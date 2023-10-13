@@ -1,5 +1,8 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -7,10 +10,12 @@ public class EnemyController : MonoBehaviour
     private EnemySpawner spawner;
     List<Enemy> enemies;
     List<Enemy> turns; // comportamiento de queue
+    private Enemy currentTurn;
     // Start is called before the first frame update
     private bool play = false;
     void Start()
     {
+        spawner = GetComponent<EnemySpawner>();
         // Pedir al manager los spawns de enemies
         // Pasar a todos los enemies de lista "enemies" el EnemyControlles(this)
         enemies = spawner.GetEnemies(this);
@@ -27,25 +32,21 @@ public class EnemyController : MonoBehaviour
     {
         if (!play)
         {
-            if(turns.Count == 0)
+            if (!(turns.Count == 0))
             {
-
-            }
-            else
-            {
-                NextTurn(turns[0]);
-                play = true;
+                NextTurn();
             }
         }
     }
 
-    public void NextTurn(Enemy turn)
+    public void NextTurn()
     {
         // pop del siguiente en la lista de turns
-        Enemy nextEnemy = turns[0];
+        currentTurn = turns[0];
         turns.RemoveAt(0);
         // pop.setBehavior(attackBehavior);
-        nextEnemy.SetBehavior(new Default());
+        currentTurn.SetBehavior(new Default());
+        play = true;
     }
 
     public void EnemyDeath(Enemy enemy)
@@ -53,7 +54,14 @@ public class EnemyController : MonoBehaviour
         // Quitar especifico de la lista de enemies
         enemies.Remove(enemy);
         // Asegurar que no exista especifico de la lista de turns
-        turns.Remove(enemy);
+        if (turns.Contains(enemy))
+            turns.Remove(enemy);
+
+        if (enemies.Count == 0) 
+        { 
+            //end of fight - NextEvent, Forward!!!
+        }
+
     }
 
     public void EndOfEnemyTurn(Enemy enemy)
@@ -61,11 +69,13 @@ public class EnemyController : MonoBehaviour
         // atb = active time battle
         // enemy atb (time counter)
         enemy.SetBehavior(new ATBSleep());
+        play = false;
     }
 
+    // Eventualmente se tiene que solucionar que cuando ataca el jugador todos los contadores ATB se paran
     public void ATBcomplete(Enemy enemy)
     {
         // agregar a la lista de turns
         turns.Add(enemy);
-    }
+    } 
 }
