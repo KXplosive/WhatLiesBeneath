@@ -1,15 +1,15 @@
 ﻿<Properties StartupConfiguration="{7CAC69AE-92A9-997A-C707-52F04BFCCF09}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerScript/Attacking.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI/ScenesManager.cs">
     <Files>
       <File FileName="Assets/Scripts/ClasesBase/PersonajeBase.cs" Line="1" Column="1" IsPinned="True" />
       <File FileName="Assets/Scripts/PlayerScript/HeroStateMachine.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/PlayerScript/Idle.cs" Line="74" Column="24" />
       <File FileName="Assets/Scripts/PlayerScript/Running.cs" Line="45" Column="24" />
-      <File FileName="Assets/Scripts/PlayerScript/PlayerControllerFSM.cs" Line="81" Column="9" />
+      <File FileName="Assets/Scripts/PlayerScript/PlayerControllerFSM.cs" Line="72" Column="49" />
       <File FileName="Assets/Scripts/PlayerScript/Win.cs" Line="9" Column="38" />
       <File FileName="Assets/Scripts/PlayerScript/Returning.cs" Line="54" Column="24" />
       <File FileName="Assets/Scripts/UI/SceneChanger.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UI/ScenesManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/ScenesManager.cs" Line="25" Column="57" />
       <File FileName="Assets/Scripts/PlayerScript/Attacking.cs" Line="52" Column="20" />
     </Files>
     <Pads>
@@ -24,10 +24,10 @@
                 <Node name="EnemyScript" expanded="True" />
                 <Node name="Misc" expanded="True" />
                 <Node name="MosterScript" expanded="True" />
-                <Node name="PlayerScript" expanded="True">
-                  <Node name="Attacking.cs" selected="True" />
+                <Node name="PlayerScript" expanded="True" />
+                <Node name="UI" expanded="True">
+                  <Node name="ScenesManager.cs" selected="True" />
                 </Node>
-                <Node name="UI" expanded="True" />
               </Node>
             </Node>
           </Node>
