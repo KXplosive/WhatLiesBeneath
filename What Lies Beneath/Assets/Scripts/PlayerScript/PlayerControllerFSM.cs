@@ -40,6 +40,7 @@ public class PlayerControllerFSM : MonoBehaviour
     public readonly Running RunningState = new Running();
     public readonly Attacking AttackState = new Attacking();
     public readonly Returning ReturnState = new Returning();
+    public readonly Win WinState = new Win();
 
     private void Awake()
     {
@@ -68,8 +69,16 @@ public class PlayerControllerFSM : MonoBehaviour
         {
             monsterB[i] = enemies[i].GetComponent<MonsterB>();
         }
+        if(ScenesManager.sceneOrder[ScenesManager.currentScene] == 4)
+        {
+            TransitionToState(WinState);
+        }
+        else
+        {
+            TransitionToState(IdleState);
+        }
         enemySelected = -1;
-        TrasitionToState(IdleState);
+        
     }
 
     // Update is called once per frame
@@ -93,16 +102,19 @@ public class PlayerControllerFSM : MonoBehaviour
         currentState.OnCollisionEnter(this, other);
     }
 
-    internal void TrasitionToState(PlayerBaseState playerState)
+    internal void TransitionToState(PlayerBaseState playerState)
     {
         currentState = playerState;
         currentState.EnterState(this);
     }
 
-    public enum AnimatorTriggerStates { Idle = 0, DashNoMovement = 1, Attack = 2, Return = 3};
+    string[] animations = { "Idle", "DashNoMovement", "Attack", "ReturnNoMovement","Victory" };
+    public enum AnimatorTriggerStates { Idle = 0, DashNoMovement = 1, Attack = 2, Return = 3, Win = 4};
+
     public void SetAnimatorTrigger(AnimatorTriggerStates state)
     {
-        animator.SetInteger("anim", (int)state);
+        //animator.SetInteger("anim", (int)state);
+        animator.Play(animations[(int)state]);
     }
 
     public void DestroyGO(GameObject gameObject)

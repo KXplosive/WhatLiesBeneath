@@ -57,21 +57,21 @@ public class Idle : PlayerBaseState
             {
                 player.stateMachine.currentBattleState = HeroStateMachine.BattleState.ACTION;
                 player.attackSelected = 0;
-                player.TrasitionToState(player.RunningState);
+                player.TransitionToState(player.RunningState);
                 //StartCoroutine(Attacking(character.attacks[0], enemies[enemySelected]));
             }
             else if (Input.GetKeyDown("2") && player.enemySelected != -1)
             {
                 player.stateMachine.currentBattleState = HeroStateMachine.BattleState.ACTION;
                 player.attackSelected = 1;
-                player.TrasitionToState(player.RunningState);
+                player.TransitionToState(player.RunningState);
                 //StartCoroutine(Attacking(character.attacks[1], enemies[enemySelected]));
             }
             else if (Input.GetKeyDown("3") && player.enemySelected != -1)
             {
                 player.stateMachine.currentBattleState = HeroStateMachine.BattleState.ACTION;
                 player.attackSelected = 2;
-                player.TrasitionToState(player.RunningState);
+                player.TransitionToState(player.RunningState);
                 //StartCoroutine(Attacking(character.attacks[2], enemies[enemySelected]));
             }
 

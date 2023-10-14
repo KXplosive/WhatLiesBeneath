@@ -17,11 +17,12 @@ public class ScenesManager : MonoBehaviour
         MainMenu,
         Fight,
         Rest,
-        Boss
+        Boss,
+        Win
     }
 
-    int[] sceneOrder = {1, 1, 2, 1, 1, 2, 3,0 };
-    public static int currentScene = -1;
+    public static int[] sceneOrder = {1, 1, 2, 1, 1, 2, 3,4,0 };
+    public static int currentScene = sceneOrder.Length-1;
 
     public static float currentHP;
 

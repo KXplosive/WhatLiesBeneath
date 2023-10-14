@@ -42,7 +42,7 @@ public class Running : PlayerBaseState
         }
         else
         {
-            player.TrasitionToState(new Attacking());
+            player.TransitionToState(new Attacking());
         }
     }
 

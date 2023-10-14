@@ -1,24 +1,16 @@
 ﻿<Properties StartupConfiguration="{7CAC69AE-92A9-997A-C707-52F04BFCCF09}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI/NextSceneButton.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerScript/Attacking.cs">
     <Files>
-      <File FileName="Assets/Animation/AnyStateAnimator.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/PlayerScript/HeroStateMachine.cs" Line="9" Column="1" />
-      <File FileName="Assets/Scripts/PlayerScript/PlayerController.cs" Line="177" Column="1" />
-      <File FileName="Assets/Scripts/PlayerScript/PlayerControllerFSM.cs" Line="51" Column="28" />
-      <File FileName="Assets/Scripts/PlayerScript/Idle.cs" Line="50" Column="46" />
-      <File FileName="Assets/Scripts/PlayerScript/Running.cs" Line="9" Column="1" />
-      <File FileName="Assets/Scripts/PlayerScript/Attack.cs" Line="44" Column="123" />
-      <File FileName="Assets/Scripts/PlayerScript/Return.cs" Line="13" Column="83" />
-      <File FileName="Assets/Scripts/MosterScript/MonsterController.cs" Line="43" Column="51" />
-      <File FileName="Assets/Scripts/MosterScript/MonsterB.cs" Line="25" Column="48" />
-      <File FileName="Assets/Scripts/EnemyScript/EnemySpawner.cs" Line="27" Column="11" />
-      <File FileName="Assets/Scripts/PlayerScript/RestoreHPRest.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UI/SceneChanger.cs" Line="4" Column="34" />
-      <File FileName="Assets/Scripts/PlayerScript/PlayerBaseState.cs" Line="11" Column="80" />
-      <File FileName="Assets/Scripts/ClasesBase/PersonajeBase.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Misc/PlayerData.cs" Line="5" Column="31" />
-      <File FileName="Assets/Scripts/UI/ScenesManager.cs" Line="48" Column="59" />
-      <File FileName="Assets/Scripts/UI/NextSceneButton.cs" Line="7" Column="13" />
+      <File FileName="Assets/Scripts/ClasesBase/PersonajeBase.cs" Line="1" Column="1" IsPinned="True" />
+      <File FileName="Assets/Scripts/PlayerScript/HeroStateMachine.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PlayerScript/Idle.cs" Line="74" Column="24" />
+      <File FileName="Assets/Scripts/PlayerScript/Running.cs" Line="45" Column="24" />
+      <File FileName="Assets/Scripts/PlayerScript/PlayerControllerFSM.cs" Line="81" Column="9" />
+      <File FileName="Assets/Scripts/PlayerScript/Win.cs" Line="9" Column="38" />
+      <File FileName="Assets/Scripts/PlayerScript/Returning.cs" Line="54" Column="24" />
+      <File FileName="Assets/Scripts/UI/SceneChanger.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/ScenesManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PlayerScript/Attacking.cs" Line="52" Column="20" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -32,10 +24,10 @@
                 <Node name="EnemyScript" expanded="True" />
                 <Node name="Misc" expanded="True" />
                 <Node name="MosterScript" expanded="True" />
-                <Node name="PlayerScript" expanded="True" />
-                <Node name="UI" expanded="True">
-                  <Node name="NextSceneButton.cs" selected="True" />
+                <Node name="PlayerScript" expanded="True">
+                  <Node name="Attacking.cs" selected="True" />
                 </Node>
+                <Node name="UI" expanded="True" />
               </Node>
             </Node>
           </Node>

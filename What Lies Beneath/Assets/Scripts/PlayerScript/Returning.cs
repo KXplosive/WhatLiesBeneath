@@ -51,7 +51,7 @@ public class Returning : PlayerBaseState
             {
                 player.stateMachine.currentBattleState = HeroStateMachine.BattleState.WAITING;
             }
-            player.TrasitionToState(player.IdleState);
+            player.TransitionToState(player.IdleState);
         }
     }
 

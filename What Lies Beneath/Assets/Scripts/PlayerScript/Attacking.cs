@@ -49,7 +49,7 @@ public class Attacking : PlayerBaseState
             player.DestroyGO(GameObject.FindGameObjectWithTag("Cursor"));
 
         }
-        player.TrasitionToState(player.ReturnState);
+        player.TransitionToState(player.ReturnState);
         // hacer algo al terminar la animacion
         // cambiar estado y destruir
     }
