@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerControllerFSM : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class PlayerControllerFSM : MonoBehaviour
     public GameObject[] enemies;
 
     public GameObject cursor;
+
+    PhotonView view;
 
     [System.NonSerialized]
     public HeroStateMachine stateMachine;
@@ -78,18 +81,24 @@ public class PlayerControllerFSM : MonoBehaviour
             TransitionToState(IdleState);
         }
         enemySelected = -1;
-        
+
+        view = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (enemySelected > -1)
+        if(view.IsMine)
         {
-            enemySelectedGO = enemies[enemySelected];
+            //enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            if (enemySelected > -1)
+            {
+                enemySelectedGO = enemies[enemySelected];
+            }
+            currentState.Update(this);
+
         }
-        currentState.Update(this);
+
     }
 
     private void OnTriggerEnter(Collider other)

@@ -33,12 +33,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu/New Run.unity
     guid: dc8bdbba0eab7d345a4260bc4bbca443
   - enabled: 1
-    path: Assets/Scenes/Menu/Credits.unity
-    guid: 1794a20eab7c6ee42ac03bf43f50507f
+    path: Assets/Scenes/Menu/Lobby.unity
+    guid: 88ce3731bcd57b34b863c84288ea9af3
+  - enabled: 1
+    path: Assets/Scenes/Menu/Co-Op.unity
+    guid: 708dbf869951def408bec12458e1f3be
   - enabled: 1
     path: Assets/Scenes/Menu/Continue.unity
     guid: d82019b940b954447bc8a5dddf4e24b9
   - enabled: 1
-    path: Assets/Scenes/Menu/Co-Op.unity
-    guid: 62cae9a01c26f3f4fba41dabb22f63e8
+    path: Assets/Scenes/Menu/Co-Op2.unity
+    guid: 583112fd2f028fe4bb6d76583ad030b4
+  - enabled: 1
+    path: Assets/Scenes/Menu/Credits.unity
+    guid: f30f3ce3b62cdd14b8c45eaca34d5d04
   m_configObjects: {}
