@@ -577,7 +577,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1628499150}
         m_TargetAssemblyTypeName: ButtonsMainMenu, Assembly-CSharp
-        m_MethodName: ChangeNewRun
+        m_MethodName: ChangeBattle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

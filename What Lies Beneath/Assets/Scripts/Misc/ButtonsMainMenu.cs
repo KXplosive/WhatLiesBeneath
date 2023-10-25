@@ -42,4 +42,11 @@ public class ButtonsMainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Settings");
     }
+
+    public void ChangeBattle()
+    {
+        SceneManager.LoadScene("Battle");
+    }
+
+
 }

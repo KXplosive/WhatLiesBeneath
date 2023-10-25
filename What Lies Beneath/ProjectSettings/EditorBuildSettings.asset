@@ -20,4 +20,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Events/Boss.unity
     guid: a8b31c27ee14621469c102c1557dedf9
+  - enabled: 1
+    path: Assets/Scenes/Win Lose/Win.unity
+    guid: 3d6f0124d31fd4ec683c220030d15e16
+  - enabled: 1
+    path: Assets/Scenes/Win Lose/Lose.unity
+    guid: 8494f450e2b50a444823b51d1e48ed1a
+  - enabled: 1
+    path: Assets/Scenes/Menu/Settings.unity
+    guid: 8855e931691894247a765ad7547cc3c0
+  - enabled: 1
+    path: Assets/Scenes/Menu/New Run.unity
+    guid: dc8bdbba0eab7d345a4260bc4bbca443
+  - enabled: 1
+    path: Assets/Scenes/Menu/Credits.unity
+    guid: 1794a20eab7c6ee42ac03bf43f50507f
+  - enabled: 1
+    path: Assets/Scenes/Menu/Continue.unity
+    guid: d82019b940b954447bc8a5dddf4e24b9
+  - enabled: 1
+    path: Assets/Scenes/Menu/Co-Op.unity
+    guid: 62cae9a01c26f3f4fba41dabb22f63e8
   m_configObjects: {}
