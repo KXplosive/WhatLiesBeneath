@@ -30,7 +30,7 @@ public class ButtonGO : MonoBehaviour
         else if(Variables.contEventos == 5 && Variables.auxEventoPasado == 1)
         {
             Variables.contEventos++;
-            SceneManager.LoadScene("Descanso");
+            SceneManager.LoadScene("Rest");
             escenaPosNeg = 0;
         }
 
