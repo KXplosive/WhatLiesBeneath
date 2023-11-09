@@ -83,6 +83,7 @@ public class PlayerControllerFSM : MonoBehaviour
         enemySelected = -1;
 
         view = GetComponent<PhotonView>();
+        // if view is mine poner componente main player
     }
 
     // Update is called once per frame
