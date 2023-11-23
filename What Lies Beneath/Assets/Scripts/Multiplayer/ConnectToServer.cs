@@ -3,21 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class ConnectToServer : MonoBehaviourPunCallbacks
 {
-    // Start is called before the first frame update
-    private void Start()
+    public TMP_InputField usernameInput;
+    public GameObject Loading;
+    public GameObject Connect;
+
+    public void OnClickConnect()
     {
-        PhotonNetwork.ConnectUsingSettings();
+        if (usernameInput.text.Length > 0)
+        {
+            PhotonNetwork.NickName = usernameInput.text;
+            Connect.SetActive(false);
+            Loading.SetActive(true);
+            PhotonNetwork.ConnectUsingSettings();
+        }
     }
 
     public override void OnConnectedToMaster()
-    {
-        PhotonNetwork.JoinLobby();
-    }
-
-    public override void OnJoinedLobby()
     {
         SceneManager.LoadScene("Lobby");
     }

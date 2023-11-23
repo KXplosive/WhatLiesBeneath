@@ -256,6 +256,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: -2151620637681075362}
+  - {fileID: 5562146400664919572}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -306,8 +307,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
-  m_SynchronizeParameters: []
-  m_SynchronizeLayers: []
+  m_SynchronizeParameters:
+  - Type: 3
+    SynchronizeType: 0
+    Name: anim
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!1 &8255388424631633345
 GameObject:
   m_ObjectHideFlags: 0

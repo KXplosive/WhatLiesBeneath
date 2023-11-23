@@ -22,17 +22,16 @@ public class MonsterController : MonoBehaviour
             m.Add(monster);
         }
         coroutineOff = true;
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (coroutineOff)
-        {
-            StartCoroutine( atkTimer());
-            coroutineOff = false;
-        }
+            if (coroutineOff)
+            {
+                StartCoroutine(atkTimer());
+                coroutineOff = false;
+            }
     }
 
     IEnumerator atkTimer()

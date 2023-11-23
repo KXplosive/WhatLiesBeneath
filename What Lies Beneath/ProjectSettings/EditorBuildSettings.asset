@@ -42,9 +42,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu/Continue.unity
     guid: d82019b940b954447bc8a5dddf4e24b9
   - enabled: 1
-    path: Assets/Scenes/Menu/Co-Op2.unity
-    guid: 583112fd2f028fe4bb6d76583ad030b4
-  - enabled: 1
     path: Assets/Scenes/Menu/Credits.unity
     guid: f30f3ce3b62cdd14b8c45eaca34d5d04
   m_configObjects: {}

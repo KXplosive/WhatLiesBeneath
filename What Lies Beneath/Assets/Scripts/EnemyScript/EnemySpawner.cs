@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Photon.Pun;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -44,9 +45,13 @@ public class EnemySpawner : MonoBehaviour
 
 
         // spawnear a los enemgos
-        for (int i = 0; i < enemiesSelected.enemies.Length; i++)
+        if (PhotonNetwork.IsMasterClient == true)
         {
-            Instantiate(enemiesSelected.enemies[i], positions[i],Quaternion.identity);
+            for (int i = 0; i < enemiesSelected.enemies.Length; i++)
+            {
+                Debug.Log("Enemigo " + i + ": " + enemiesSelected.enemies[i].name);
+                PhotonNetwork.Instantiate(enemiesSelected.enemies[i].name, positions[i], Quaternion.identity);
+            }
         }
         numOrdas -= 1;
         //P1.LoadMosters();

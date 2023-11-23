@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class ButtonGO : MonoBehaviour
 {
+    public GameObject player;
+    public GameObject aaa;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +18,19 @@ public class ButtonGO : MonoBehaviour
     {
         int escenaPosNeg = Random.Range(0, 2);
         int escenaNum = Random.Range(0, 3);
-        if(Variables.contEventos == 0)
+        //instanciar gameobject player
+        if (Variables.contEventos == 0 && Variables.contNivel == 0)
+        {
+            aaa = Instantiate(player);
+            DontDestroyOnLoad(aaa);
+        }
+
+        if (Variables.contEventos == 0)
         {
             Variables.contNivel++;
+            aaa.GetComponent<HeroStateMachine>().character.currentHP = aaa.GetComponent<HeroStateMachine>().character.baseHP;
+            //asignar currenthp = basehp
+            //es regenerar la vida
         }
 
         if(Variables.contEventos == 5 && Variables.auxEventoPasado == 0)
