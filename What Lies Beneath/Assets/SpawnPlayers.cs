@@ -1,21 +1,56 @@
+using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
-public class SpawnPlayers : MonoBehaviour
+public class SpawnPlayers : MonoBehaviourPunCallbacks
 {
-    public GameObject playerPrefab;
+    //Instancia (singleton)
+    public static SpawnPlayers instance;
 
-    public float minX;
-    public float maxX;
-    public float minY;
-    public float maxY;
+    public bool isGameEnd = false;
+    public string playerPrefab;
 
-    private void Start()
+    public Transform[] spawnPositions;
+    public PlayerControllerFSM[] players;
+
+    [SerializeField] private int playerInGame;
+    
+    public UIController uiController;
+
+    void Awake()
     {
-        Vector2 randomPosition = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-        PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, Quaternion.identity);
+        instance = this;
+    }
+
+    void Start()
+    {
+        players = new PlayerControllerFSM[PhotonNetwork.PlayerList.Length];
+        photonView.RPC("InGame", RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    void InGame()
+    {
+        playerInGame++;
+        if (playerInGame == PhotonNetwork.PlayerList.Length)
+        {
+            SpawnPlayer();
+        }
+    }
+
+    void SpawnPlayer()
+    {
+        GameObject playerObj = PhotonNetwork.Instantiate(playerPrefab, spawnPositions[0].position, Quaternion.identity);
+
+        //forma larga
+        //playerObj.GetComponent<PlayerController>().photonView.RPC("Init", RpcTarget.All, PhotonNetwork.LocalPlayer);
+
+        //uso de variable para facil lectura
+        PlayerControllerFSM playScript = playerObj.GetComponent<PlayerControllerFSM>();
+        playScript.photonView.RPC("Init", RpcTarget.All, PhotonNetwork.LocalPlayer);
     }
 
 }
+

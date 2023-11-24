@@ -2,11 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
+using UnityEngine.Animations.Rigging;
 
-public class PlayerControllerFSM : MonoBehaviour
+public class PlayerControllerFSM : MonoBehaviourPunCallbacks
 {
     [System.NonSerialized]
     public GameObject[] enemies;
+
+    [HideInInspector]
+    public int id;
+
+    [Header("Components")]
+    public Player photonPlayer;
+
 
     public GameObject cursor;
 
@@ -99,7 +108,15 @@ public class PlayerControllerFSM : MonoBehaviour
             currentState.Update(this);
 
         }
+    }
 
+    // Inicializar la informacion del player actual
+    [PunRPC]
+    public void Init(Player player)
+    {
+        photonPlayer = player;// Asiganar el player actual
+        id = player.ActorNumber;//Guardar el id del player
+        SpawnPlayers.instance.players[id - 1] = this;// Asiganarlo a las lista de player dentro del game controller
     }
 
     private void OnTriggerEnter(Collider other)

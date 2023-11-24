@@ -44,12 +44,10 @@ public class EnemySpawner : MonoBehaviour
         }
 
 
-        // spawnear a los enemgos
         if (PhotonNetwork.IsMasterClient == true)
         {
             for (int i = 0; i < enemiesSelected.enemies.Length; i++)
             {
-                Debug.Log("Enemigo " + i + ": " + enemiesSelected.enemies[i].name);
                 PhotonNetwork.Instantiate(enemiesSelected.enemies[i].name, positions[i], Quaternion.identity);
             }
         }

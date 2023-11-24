@@ -5,8 +5,10 @@ using System.Linq;
 // using TMPro;
 // using Unity.Mathematics;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class MonsterController : MonoBehaviour
+public class MonsterController : MonoBehaviourPunCallbacks
 {
 
     [SerializeField] public List<GameObject> m;
@@ -24,16 +26,18 @@ public class MonsterController : MonoBehaviour
         coroutineOff = true;
     }
 
+    [PunRPC]
     // Update is called once per frame
     void Update()
     {
-            if (coroutineOff)
-            {
-                StartCoroutine(atkTimer());
-                coroutineOff = false;
-            }
+        if (coroutineOff)
+        {
+            photonView.RPC("atkTimer", RpcTarget.All);
+            coroutineOff = false;
+        }
     }
 
+    [PunRPC]
     IEnumerator atkTimer()
     {
         float randTime = Random.Range(4f, 8f);
@@ -42,16 +46,11 @@ public class MonsterController : MonoBehaviour
         yield return new WaitForSeconds(randTime);
         MonsterB mon = m[randMon].GetComponent<MonsterB>();
         GameObject[] attackPlayer = GameObject.FindGameObjectsWithTag("Player");
+        
         int whichPlayer = Random.Range(0, attackPlayer.Length);
         StartCoroutine(mon.Attacking(attackPlayer[whichPlayer]));
-
         yield return new WaitForSeconds(0.5f);
         coroutineOff = true;
         yield return null;
-    }
-
-    public void RemoveMe(GameObject obj)
-    {
-
     }
 }

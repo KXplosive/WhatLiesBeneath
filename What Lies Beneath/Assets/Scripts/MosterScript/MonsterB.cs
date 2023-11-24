@@ -1,7 +1,9 @@
 using System.Collections;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class MonsterB : MonoBehaviour
+public class MonsterB : MonoBehaviourPunCallbacks
 {
     /*Spawn Enemies
 Enemy Attacks
@@ -11,6 +13,7 @@ CHECK IF CODE CAN BE APPLIED*/
     public MonsterController monsterC;
     public EnemyBase enemyBase;
     public float attackDistance;
+    public Player photonPlayer;
     // public GameObject obj;
 
 
@@ -26,107 +29,110 @@ CHECK IF CODE CAN BE APPLIED*/
     // Update is called once per frame
     void Update()
     {
-            if (enemyBase.currentHP <= 0)
-            {
-                // SEND CALL FOR DEATH
-                monsterC.RemoveMe(gameObject);
-
-                // Destroys the object in 2 seconds
-                Destroy(gameObject);
-
-                // Death animation 
-            }
+        if (enemyBase.currentHP <= 0)
+        {
+            // SEND CALL FOR DEATH
+            photonView.RPC("DeathEnemy", RpcTarget.All, gameObject.GetComponent<PhotonView>().ViewID);
+        }
     }
 
+    [PunRPC]
+    void DeathEnemy(int _id)
+    {
+        GameObject enemy = PhotonNetwork.GetPhotonView(_id).gameObject;
+        enemy.gameObject.SetActive(false);
+    }
 
+    [PunRPC]
     public IEnumerator Attacking(GameObject player)
     {
-            HeroStateMachine heroState = player.GetComponent<HeroStateMachine>();
-            Vector3 ogPosition = gameObject.transform.position;
-            float posX;
-            float posY;
-            float speed = 10f;
+        
+        HeroStateMachine heroState = player.GetComponent<HeroStateMachine>();
+        Vector3 ogPosition = gameObject.transform.position;
+        float posX;
+        float posY;
+        float speed = 10f;
 
-            // el monstruo se mueve hacia el jugador
-            while (gameObject.transform.position.x > player.transform.position.x + attackDistance && gameObject.transform.position.y != player.transform.position.y)
+        // el monstruo se mueve hacia el jugador
+        while (gameObject.transform.position.x > player.transform.position.x + attackDistance && gameObject.transform.position.y != player.transform.position.y)
+        {
+            if (gameObject.transform.position.x > player.transform.position.x + attackDistance)
             {
-                if (gameObject.transform.position.x > player.transform.position.x + attackDistance)
-                {
-                    posX = gameObject.transform.position.x - speed * Time.deltaTime;
-                }
-                else
-                {
-                    posX = gameObject.transform.position.x;
-                }
-                if (gameObject.transform.position.y < player.transform.position.y)
-                {
-                    posY = gameObject.transform.position.y + speed * Time.deltaTime;
-                }
-                else if (gameObject.transform.position.y > player.transform.position.y)
-                {
-                    posY = gameObject.transform.position.y - speed * Time.deltaTime;
-                }
-                else
-                {
-                    posY = gameObject.transform.position.y;
-                }
-                gameObject.transform.position = new Vector3(posX, posY);
-                yield return null;
-
+                posX = gameObject.transform.position.x - speed * Time.deltaTime;
             }
-
-            // animacion de ataque
-
-            // el monstruo realiza el ataque
-            heroState.character.currentHP -= 7.5f;
+            else
+            {
+                posX = gameObject.transform.position.x;
+            }
+            if (gameObject.transform.position.y < player.transform.position.y)
+            {
+                posY = gameObject.transform.position.y + speed * Time.deltaTime;
+            }
+            else if (gameObject.transform.position.y > player.transform.position.y)
+            {
+                posY = gameObject.transform.position.y - speed * Time.deltaTime;
+            }
+            else
+            {
+                posY = gameObject.transform.position.y;
+            }
+            gameObject.transform.position = new Vector3(posX, posY);
             yield return null;
 
+        }
+
+        // animacion de ataque
+
+        // el monstruo realiza el ataque
+        heroState.character.currentHP -= 7.5f;
+        yield return null;
 
 
-            for (float i = 0; i < 3; i += Time.deltaTime)
+
+        for (float i = 0; i < 3; i += Time.deltaTime)
+        {
+            yield return null;
+        }
+
+        float distX = Mathf.Abs(gameObject.transform.position.x - ogPosition.x) * 5;
+        float distY = Mathf.Abs(gameObject.transform.position.y - ogPosition.y) * 5;
+
+        // el monstruo regresa a la posicion original
+        while (gameObject.transform.position.x != ogPosition.x && gameObject.transform.position.y != ogPosition.y)
+        {
+            posX = gameObject.transform.position.x + distX * Time.deltaTime;
+            if (posX > ogPosition.x)
             {
-                yield return null;
+                posX = ogPosition.x;
             }
-
-            float distX = Mathf.Abs(gameObject.transform.position.x - ogPosition.x) * 5;
-            float distY = Mathf.Abs(gameObject.transform.position.y - ogPosition.y) * 5;
-
-            // el monstruo regresa a la posicion original
-            while (gameObject.transform.position.x != ogPosition.x && gameObject.transform.position.y != ogPosition.y)
+            if (gameObject.transform.position.y > ogPosition.y)
             {
-                posX = gameObject.transform.position.x + distX * Time.deltaTime;
-                if (posX > ogPosition.x)
-                {
-                    posX = ogPosition.x;
-                }
-                if (gameObject.transform.position.y > ogPosition.y)
-                {
-                    posY = gameObject.transform.position.y - distY * Time.deltaTime;
-                    if (posY < ogPosition.y)
-                    {
-                        posY = ogPosition.y;
-                    }
-                }
-                else if (gameObject.transform.position.y < ogPosition.y)
-                {
-                    posY = gameObject.transform.position.y + distY * Time.deltaTime;
-                    if (posY > ogPosition.y)
-                    {
-                        posY = ogPosition.y;
-                    }
-                }
-                else
+                posY = gameObject.transform.position.y - distY * Time.deltaTime;
+                if (posY < ogPosition.y)
                 {
                     posY = ogPosition.y;
                 }
-                gameObject.transform.position = new Vector3(posX, posY);
-
-                yield return null;
             }
-
-            // Back to Idle
-
+            else if (gameObject.transform.position.y < ogPosition.y)
+            {
+                posY = gameObject.transform.position.y + distY * Time.deltaTime;
+                if (posY > ogPosition.y)
+                {
+                    posY = ogPosition.y;
+                }
+            }
+            else
+            {
+                posY = ogPosition.y;
+            }
+            gameObject.transform.position = new Vector3(posX, posY);
 
             yield return null;
         }
+
+        // Back to Idle
+
+
+        yield return null;
+    }
 }
