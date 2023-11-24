@@ -7,11 +7,18 @@ using UnityEngine.SceneManagement;
 public class ButtonGO : MonoBehaviour
 {
     public GameObject player;
+    public GameObject[] players;
     public GameObject aaa;
+    public GameObject fondo1;
+    public GameObject fondo2;
     // Start is called before the first frame update
     void Start()
     {
-
+        if (Variables.contNivel == 2)
+        {
+            fondo1.SetActive(false);
+            fondo2.SetActive(true);
+        }
     }
 
     public void LoadNewLevel()
@@ -19,6 +26,9 @@ public class ButtonGO : MonoBehaviour
         int escenaPosNeg = Random.Range(0, 2);
         int escenaNum = Random.Range(0, 3);
         //instanciar gameobject player
+
+        
+
         if (Variables.contEventos == 0 && Variables.contNivel == 0)
         {
             aaa = Instantiate(player);
@@ -28,7 +38,11 @@ public class ButtonGO : MonoBehaviour
         if (Variables.contEventos == 0)
         {
             Variables.contNivel++;
-            aaa.GetComponent<HeroStateMachine>().character.currentHP = aaa.GetComponent<HeroStateMachine>().character.baseHP;
+            players = GameObject.FindGameObjectsWithTag("Player");
+            foreach (GameObject p in players)
+            {
+                p.GetComponent<HeroStateMachine>().character.currentHP = p.GetComponent<HeroStateMachine>().character.baseHP;
+            }
             //asignar currenthp = basehp
             //es regenerar la vida
         }
@@ -84,6 +98,11 @@ public class ButtonGO : MonoBehaviour
                 Variables.contEventos++;
             }
         }
+        if (Variables.contNivel == 3)
+        {
+            SceneManager.LoadScene("Win");
+        }
+
         Debug.Log("Positivo o Negativo: " + escenaPosNeg + "\n" +
                   "Eventos: " + Variables.contEventos + "\n" +
                   "Cont Posi o Nega: " + Variables.contPosNeg + "\n" +
