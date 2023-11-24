@@ -23,6 +23,7 @@ public class ButtonGO : MonoBehaviour
 
     public void LoadNewLevel()
     {
+        Debug.Log("Cambio de escena");
         int escenaPosNeg = Random.Range(0, 2);
         int escenaNum = Random.Range(0, 3);
         //instanciar gameobject player
@@ -109,6 +110,10 @@ public class ButtonGO : MonoBehaviour
                   "Nivel: " + Variables.contNivel + "\n" +
                   "Pasado: " + Variables.auxEventoPasado + "\n");
         Variables.auxEventoPasado = escenaPosNeg;
+        foreach (GameObject p in players)
+        {
+            p.GetComponent<PlayerControllerFSM>().newScene = true;
+        }
     }
 
     // Update is called once per frame

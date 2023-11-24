@@ -5,13 +5,15 @@ using UnityEngine;
 public class RestoreHPRest : MonoBehaviour
 {
     public HeroStateMachine[] stateMachine;
+    public GameObject[] players;
 
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < stateMachine.Length; i++)
+        players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject player in players)
         {
-            stateMachine[i].character.currentHP = stateMachine[i].character.baseHP;
+            player.GetComponent<HeroStateMachine>().character.currentHP = player.GetComponent<HeroStateMachine>().character.baseHP;
         }
     }
 

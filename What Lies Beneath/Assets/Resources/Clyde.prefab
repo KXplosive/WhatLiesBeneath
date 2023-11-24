@@ -935,9 +935,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ca954f5f8db8b4a87288122508c9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursor: {fileID: 0}
+  enemies: []
+  cursor: {fileID: 5524555241018301975, guid: 6656bed249f0942db8c872f00574ef9b, type: 3}
   potions: {fileID: 0}
   gold: 0
+  newScene: 0
 --- !u!114 &4252651096242248733
 MonoBehaviour:
   m_ObjectHideFlags: 0

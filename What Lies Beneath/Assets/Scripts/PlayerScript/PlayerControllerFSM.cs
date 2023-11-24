@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerControllerFSM : MonoBehaviour
 {
-    [System.NonSerialized]
     public GameObject[] enemies;
 
     public GameObject cursor;
@@ -48,7 +47,7 @@ public class PlayerControllerFSM : MonoBehaviour
     public readonly Returning ReturnState = new Returning();
     public readonly Win WinState = new Win();
     public readonly Lose LoseState = new Lose();
-
+    public bool newScene = false;
     private void Awake()
     {
         animator = gameObject.GetComponent<Animator>();
@@ -70,26 +69,7 @@ public class PlayerControllerFSM : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        stateMachine = gameObject.GetComponent<HeroStateMachine>();
-        monsterB = new MonsterB[enemies.Length];
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            monsterB[i] = enemies[i].GetComponent<MonsterB>();
-        }
-        if(ScenesManager.currentScene == -1)
-        {
-            TransitionToState(LoseState);
-        }
-        else if (ScenesManager.sceneOrder[ScenesManager.currentScene] == 4)
-        {
-            TransitionToState(WinState);
-        }
-        else
-        {
-            TransitionToState(IdleState);
-        }
-        enemySelected = -1;
+        
         /*
         for(int i = 0; i < potions.Length; i++)
         {
@@ -102,6 +82,30 @@ public class PlayerControllerFSM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (newScene)
+        {
+            enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            stateMachine = gameObject.GetComponent<HeroStateMachine>();
+            monsterB = new MonsterB[enemies.Length];
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                monsterB[i] = enemies[i].GetComponent<MonsterB>();
+            }
+            if (ScenesManager.currentScene == -1)
+            {
+                TransitionToState(LoseState);
+            }
+            else if (ScenesManager.sceneOrder[ScenesManager.currentScene] == 4)
+            {
+                TransitionToState(WinState);
+            }
+            else
+            {
+                TransitionToState(IdleState);
+            }
+            enemySelected = -1;
+            newScene = false;
+        }
         //enemies = GameObject.FindGameObjectsWithTag("Enemy");
         if (enemySelected > -1)
         {

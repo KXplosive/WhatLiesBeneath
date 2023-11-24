@@ -213,7 +213,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5159093835362506831}
   m_LocalRotation: {x: 0, y: 0, z: 0.7172482, w: 0.6968179}
-  m_LocalPosition: {x: -2.112432, y: 0.30750722, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -269,9 +269,8 @@ GameObject:
   - component: {fileID: 6663993264591700956}
   - component: {fileID: 3308488107847253074}
   - component: {fileID: 6589500566390235804}
-  - component: {fileID: 3516155425504014376}
-  - component: {fileID: 5859403323083211363}
-  - component: {fileID: 2124050953496924282}
+  - component: {fileID: 2268215641587054543}
+  - component: {fileID: 613758258914787259}
   m_Layer: 0
   m_Name: Demon
   m_TagString: Enemy
@@ -287,7 +286,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5578365433480996991}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.8741236, y: -0.86776674, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -374,12 +373,32 @@ MonoBehaviour:
   - {fileID: 5680445054878111763}
   - {fileID: 757818895765238726}
   m_Bounds:
-    m_Center: {x: -1.7335925, y: 1.5850542, z: 0}
-    m_Extent: {x: 2.6127405, y: 3.3364937, z: 0}
+    m_Center: {x: 0.15744042, y: 1.2213318, z: 0}
+    m_Extent: {x: 2.8341386, y: 3.2802784, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
---- !u!114 &3516155425504014376
+--- !u!95 &2268215641587054543
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5578365433480996991}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a8c2e34fbb10e234d8435ccacae9fdd4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &613758258914787259
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -395,62 +414,13 @@ MonoBehaviour:
   enemyBase:
     nombre: Demon
     currentHP: 0
-    baseHP: 65
+    baseHP: 150
     stamina: 100
-    Attack: 30
+    Attack: 8
     currentAttack: 0
-    Defense: 30
+    Defense: 2
     currentDefense: 0
   attackDistance: 0
---- !u!114 &5859403323083211363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5578365433480996991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PositionModel:
-    SynchronizeEnabled: 0
-    TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 2
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 1
-    ExtrapolateOption: 0
-    ExtrapolateSpeed: 1
-    ExtrapolateIncludingRoundTripTime: 1
-    ExtrapolateNumberOfStoredPositions: 1
-  m_RotationModel:
-    SynchronizeEnabled: 0
-    InterpolateOption: 1
-    InterpolateRotateTowardsSpeed: 180
-    InterpolateLerpSpeed: 5
-  m_ScaleModel:
-    SynchronizeEnabled: 0
-    InterpolateOption: 0
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 0
---- !u!114 &2124050953496924282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5578365433480996991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowLayerWeightsInspector: 1
-  ShowParameterInspector: 1
-  m_SynchronizeParameters: []
-  m_SynchronizeLayers: []
 --- !u!1 &5777751930402096332
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +537,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8151601544170737590}
-  m_LocalRotation: {x: -0, y: -0, z: -0.93420017, w: -0.35674933}
+  m_LocalRotation: {x: -0, y: -0, z: -0.8874078, w: -0.46098542}
   m_LocalPosition: {x: 2.0929585, y: 0.24106812, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -575,4 +545,4 @@ Transform:
   - {fileID: 1305003859271491285}
   m_Father: {fileID: 1500671369127828652}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 138.199}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 125.099}

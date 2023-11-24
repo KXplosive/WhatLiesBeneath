@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 759939929321552255}
   - component: {fileID: 759939929321552248}
-  - component: {fileID: 3138592097322545829}
   m_Layer: 6
   m_Name: Esteban Dido
   m_TagString: Enemy
@@ -85,25 +84,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3138592097322545829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 759939929321552250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad4c40ecbfd1844e39d838d002b13b6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyBase:
-    nombre: Esteban Dido
-    currentHP: 0
-    baseHP: 100
-    stamina: 100
-    Attack: 50
-    currentAttack: 0
-    Defense: 10
-    currentDefense: 0
-  attackDistance: 0

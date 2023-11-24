@@ -8,8 +8,13 @@ public class TemperatureManager : MonoBehaviour
     public HeroStateMachine player;
 
     // Update is called once per frame
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<HeroStateMachine>();
+    }
     void Update()
     {
+        
         if (player.character.temperature > environmentTemperature)
         {
             player.character.temperature -= 0.2f * Time.deltaTime;

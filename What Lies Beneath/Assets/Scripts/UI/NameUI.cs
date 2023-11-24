@@ -12,6 +12,7 @@ public class NameUI : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
+        heroStateMachine = GameObject.FindGameObjectWithTag("Player").GetComponent<HeroStateMachine>();
         characterName = heroStateMachine.character.nombre;
         SetCharacterName(characterName);
     }

@@ -42,7 +42,8 @@ GameObject:
   - component: {fileID: 1786814937353490322}
   - component: {fileID: 4507588674708383924}
   - component: {fileID: 3398845731362213818}
-  - component: {fileID: -4166534102175669139}
+  - component: {fileID: 756840220}
+  - component: {fileID: 5241494647181294108}
   m_Layer: 0
   m_Name: GreatDemonJack
   m_TagString: Enemy
@@ -58,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 27113556115759899}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.9895315, y: -1.2517742, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.85, y: 0.85, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -143,12 +144,32 @@ MonoBehaviour:
   - {fileID: 7402005704420241953}
   - {fileID: 1689888527966062970}
   m_Bounds:
-    m_Center: {x: 12.319136, y: 4.0457215, z: 0}
-    m_Extent: {x: 3.651383, y: 5.35522, z: 0}
+    m_Center: {x: -1.8179326, y: 3.3333867, z: 0}
+    m_Extent: {x: 3.651382, y: 5.355221, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
---- !u!114 &-4166534102175669139
+--- !u!95 &756840220
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27113556115759899}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 73bb758c2ae10cc41b5d5075b2922264, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5241494647181294108
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,14 +181,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c40ecbfd1844e39d838d002b13b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterC: {fileID: 0}
   enemyBase:
     nombre: Great Demon Jack
     currentHP: 0
-    baseHP: 300
+    baseHP: 500
     stamina: 100
-    Attack: 50
+    Attack: 15
     currentAttack: 0
-    Defense: 0
+    Defense: 1
     currentDefense: 0
   attackDistance: 0
 --- !u!1 &454498995427789882
@@ -320,7 +342,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2275276263364704378}
   m_LocalRotation: {x: -0, y: -0, z: 0.67332494, w: 0.73934674}
-  m_LocalPosition: {x: 14.13707, y: 0.7123356, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

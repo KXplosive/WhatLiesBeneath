@@ -245,7 +245,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1462184716593693813}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -4.226074, y: 0.3699355, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -315,7 +315,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3354451107400427248}
-  m_LocalRotation: {x: -0, y: -0, z: -0.6032816, w: 0.79752827}
+  m_LocalRotation: {x: -0, y: -0, z: -0.49211982, w: 0.8705275}
   m_LocalPosition: {x: 2.2210932, y: -0.63397163, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -323,7 +323,7 @@ Transform:
   - {fileID: 6928109271088509318}
   m_Father: {fileID: 2074668812284784811}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 17.297}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -58.96}
 --- !u!1 &3434396478061076342
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,7 +621,8 @@ GameObject:
   - component: {fileID: 7367687341206336776}
   - component: {fileID: 6871055237856600059}
   - component: {fileID: 5015717176594308814}
-  - component: {fileID: 3150610523697149276}
+  - component: {fileID: 8714436152672077560}
+  - component: {fileID: 7661700852303651309}
   m_Layer: 0
   m_Name: CharredTree
   m_TagString: Enemy
@@ -637,7 +638,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7014295009545314283}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.5298796, y: 1.9408877, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.85, y: 0.85, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -736,12 +737,32 @@ MonoBehaviour:
   - {fileID: 8027884218766077869}
   - {fileID: 3050819508707133255}
   m_Bounds:
-    m_Center: {x: -4.4526715, y: 1.633487, z: 0}
-    m_Extent: {x: 4.2640567, y: 3.8161008, z: 0}
+    m_Center: {x: -0.24347019, y: 1.2635517, z: 0}
+    m_Extent: {x: 4.2471848, y: 3.816101, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
---- !u!114 &3150610523697149276
+--- !u!95 &8714436152672077560
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7014295009545314283}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e83e01fe27bacc34dbbc6835371a22d7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7661700852303651309
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -753,14 +774,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c40ecbfd1844e39d838d002b13b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterC: {fileID: 0}
   enemyBase:
     nombre: Charred Tree
     currentHP: 0
-    baseHP: 30
+    baseHP: 225
     stamina: 100
-    Attack: 20
+    Attack: 12
     currentAttack: 0
-    Defense: 30
+    Defense: 2
     currentDefense: 0
   attackDistance: 0
 --- !u!1 &8186531223430185708
