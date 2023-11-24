@@ -49,7 +49,7 @@ public class SpawnPlayers : MonoBehaviourPunCallbacks
 
         //uso de variable para facil lectura
         PlayerControllerFSM playScript = playerObj.GetComponent<PlayerControllerFSM>();
-        playScript.photonView.RPC("Init", RpcTarget.All, PhotonNetwork.LocalPlayer);
+        //playScript.photonView.RPC("Init", RpcTarget.All, PhotonNetwork.LocalPlayer);
     }
 
 }

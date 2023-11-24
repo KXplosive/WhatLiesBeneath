@@ -1,25 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
-using Photon.Realtime;
-using UnityEngine.Animations.Rigging;
+using UnityEngine.SceneManagement;
 
-public class PlayerControllerFSM : MonoBehaviourPunCallbacks
+public class PlayerControllerFSM : MonoBehaviour
 {
     [System.NonSerialized]
     public GameObject[] enemies;
 
-    [HideInInspector]
-    public int id;
-
-    [Header("Components")]
-    public Player photonPlayer;
-
-
     public GameObject cursor;
-
-    PhotonView view;
 
     [System.NonSerialized]
     public HeroStateMachine stateMachine;
@@ -48,17 +37,24 @@ public class PlayerControllerFSM : MonoBehaviourPunCallbacks
         get { return currentState; }
     }
 
+    //ItemBase[] potions = { new HealingPotion() , new ManaPotion(), new StaminaPotion()};
+    public Inventory inventory = new Inventory();
+    public Potions potions;
+    public int gold = 0;
+
     public readonly Idle IdleState = new Idle();
     public readonly Running RunningState = new Running();
     public readonly Attacking AttackState = new Attacking();
     public readonly Returning ReturnState = new Returning();
     public readonly Win WinState = new Win();
+    public readonly Lose LoseState = new Lose();
 
     private void Awake()
     {
         animator = gameObject.GetComponent<Animator>();
         
         startingPosition = gameObject.transform.position;
+        potions = gameObject.GetComponent<Potions>();
     }
     /*
     public void LoadMosters()
@@ -81,7 +77,11 @@ public class PlayerControllerFSM : MonoBehaviourPunCallbacks
         {
             monsterB[i] = enemies[i].GetComponent<MonsterB>();
         }
-        if(ScenesManager.sceneOrder[ScenesManager.currentScene] == 4)
+        if(ScenesManager.currentScene == -1)
+        {
+            TransitionToState(LoseState);
+        }
+        else if (ScenesManager.sceneOrder[ScenesManager.currentScene] == 4)
         {
             TransitionToState(WinState);
         }
@@ -90,33 +90,24 @@ public class PlayerControllerFSM : MonoBehaviourPunCallbacks
             TransitionToState(IdleState);
         }
         enemySelected = -1;
-
-        view = GetComponent<PhotonView>();
-        // if view is mine poner componente main player
+        /*
+        for(int i = 0; i < potions.Length; i++)
+        {
+            potions[i].quantity = 3;
+        }
+        */
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(view.IsMine)
+        //enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemySelected > -1)
         {
-            //enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            if (enemySelected > -1)
-            {
-                enemySelectedGO = enemies[enemySelected];
-            }
-            currentState.Update(this);
-
+            enemySelectedGO = enemies[enemySelected];
         }
-    }
-
-    // Inicializar la informacion del player actual
-    [PunRPC]
-    public void Init(Player player)
-    {
-        photonPlayer = player;// Asiganar el player actual
-        id = player.ActorNumber;//Guardar el id del player
-        SpawnPlayers.instance.players[id - 1] = this;// Asiganarlo a las lista de player dentro del game controller
+        currentState.Update(this);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -129,14 +120,14 @@ public class PlayerControllerFSM : MonoBehaviourPunCallbacks
         currentState.OnCollisionEnter(this, other);
     }
 
-    internal void TransitionToState(PlayerBaseState playerState)
+    public void TransitionToState(PlayerBaseState playerState)
     {
         currentState = playerState;
         currentState.EnterState(this);
     }
 
-    string[] animations = { "Idle", "DashNoMovement", "Attack", "ReturnNoMovement","Victory" };
-    public enum AnimatorTriggerStates { Idle = 0, DashNoMovement = 1, Attack = 2, Return = 3, Win = 4};
+    string[] animations = { "Idle", "DashNoMovement", "Attack", "ReturnNoMovement","Victory" ,"Faint"};
+    public enum AnimatorTriggerStates { Idle = 0, DashNoMovement = 1, Attack = 2, Return = 3, Win = 4,Faint = 5};
 
     public void SetAnimatorTrigger(AnimatorTriggerStates state)
     {

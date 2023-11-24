@@ -1,14 +1,18 @@
 using System.Collections;
+using System.IO;
 using System.Collections.Generic;
+using System.Text;
 using Unity.VisualScripting;
 using UnityEngine;
-using Photon.Pun;
+using UnityEditor;
 
 public class EnemySpawner : MonoBehaviour
 {
 
-    public EnemyGroup[] enemyGroups;
+    public BattleGroup[] enemyGroups;
     public EnemyGroup enemies;
+
+    BattleGroup battleGroup;
 
     //public EnemyGroup[] enemyGroups;
     public EnemyGroup enemiesSelected;
@@ -16,40 +20,20 @@ public class EnemySpawner : MonoBehaviour
 
     //private PlayerControllerFSM P1;
 
-    Vector3[] positions = {new Vector3 (2f, -1.5f), new Vector3 (4.2f, 0f), new Vector3 (5f, -3f), new Vector3 (7.25f, -1.5f)};
-
-    // HACER UN CUSTOM INSPECTOR PARA ESTA CLASE
+    Vector3[] positions = { new Vector3(2f, -1.5f), new Vector3(4.2f, 0f), new Vector3(5f, -3f), new Vector3(7.25f, -1.5f) };
 
     int numOrdas;
 
     // Start is called before the first frame update
     void Awake()
     {
-        //P1 = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerFSM>();
-        if (enemies.Type == EnemyGroup.groupType.COMBATE)
-        {
-            numOrdas = 1;
-        }
-        else if (enemies.Type == EnemyGroup.groupType.ELITE)
-        {
-            numOrdas = 2;
-        }
-        else if (enemies.Type == EnemyGroup.groupType.HORDA)
-        {
-            numOrdas = 3;
-        }
-        else
-        {
-            Debug.Log("HEY, ALGO MALO PASO AQUI");
-        }
+        enemyGroups = AreaController.Instance.groups[AreaController.Instance.area - 1];
+        battleGroup = enemyGroups[Random.Range(0, enemyGroups.Length)];
 
-
-        if (PhotonNetwork.IsMasterClient == true)
+        // spawnear a los enemgos
+        for (int i = 0; i < battleGroup.enemies.Length; i++)
         {
-            for (int i = 0; i < enemiesSelected.enemies.Length; i++)
-            {
-                PhotonNetwork.Instantiate(enemiesSelected.enemies[i].name, positions[i], Quaternion.identity);
-            }
+            Instantiate(battleGroup.enemies[i], positions[i], Quaternion.identity);
         }
         numOrdas -= 1;
         //P1.LoadMosters();
@@ -75,20 +59,6 @@ public class EnemySpawner : MonoBehaviour
         /*if (!enemiesAlive()){
             nextButton.SetActive(true);
         }*/
-    }
-
-    public List<Enemy> GetEnemies(EnemyController ec)
-    {
-        List<Enemy> listaEnemies = new List<Enemy>();
-        GameObject[] GO = enemiesSelected.enemies;
-        for(int i = 0; i < GO.Length; i++)
-        {
-            var enemy = GO[i].GetComponent<Enemy>();
-            enemy.ec = ec;
-            var reference = Instantiate(GO[i], positions[i], Quaternion.identity);
-            listaEnemies.Add(enemy);
-        }
-        return listaEnemies;
     }
 
     bool enemiesAlive()

@@ -5,7 +5,6 @@ using UnityEngine;
 public class HeroStateMachine : MonoBehaviour
 {
     public PersonajeBase character;
-    public EnemyStateMachine[] enemies;
 
     public enum BattleState
     {

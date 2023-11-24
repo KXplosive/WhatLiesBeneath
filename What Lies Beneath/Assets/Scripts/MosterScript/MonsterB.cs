@@ -1,9 +1,7 @@
 using System.Collections;
 using UnityEngine;
-using Photon.Pun;
-using Photon.Realtime;
 
-public class MonsterB : MonoBehaviourPunCallbacks
+public class MonsterB : MonoBehaviour
 {
     /*Spawn Enemies
 Enemy Attacks
@@ -13,7 +11,7 @@ CHECK IF CODE CAN BE APPLIED*/
     public MonsterController monsterC;
     public EnemyBase enemyBase;
     public float attackDistance;
-    public Player photonPlayer;
+    public bool isDead;
     // public GameObject obj;
 
 
@@ -21,6 +19,7 @@ CHECK IF CODE CAN BE APPLIED*/
     void Start()
     {
         monsterC = GameObject.FindGameObjectWithTag("Monster Controller").GetComponent<MonsterController>();
+        isDead = false;
         enemyBase.currentHP = enemyBase.baseHP;
         enemyBase.currentAttack = enemyBase.Attack;
         enemyBase.currentDefense = enemyBase.Defense;
@@ -32,21 +31,21 @@ CHECK IF CODE CAN BE APPLIED*/
         if (enemyBase.currentHP <= 0)
         {
             // SEND CALL FOR DEATH
-            photonView.RPC("DeathEnemy", RpcTarget.All, gameObject.GetComponent<PhotonView>().ViewID);
+            isDead = true;
+            monsterC.RemoveMe(gameObject);
+
+            // Destroys the object in 2 seconds
+            //Destroy(gameObject);
+
+            // Death animation 
+
+
         }
     }
 
-    [PunRPC]
-    void DeathEnemy(int _id)
-    {
-        GameObject enemy = PhotonNetwork.GetPhotonView(_id).gameObject;
-        enemy.gameObject.SetActive(false);
-    }
 
-    [PunRPC]
     public IEnumerator Attacking(GameObject player)
     {
-        
         HeroStateMachine heroState = player.GetComponent<HeroStateMachine>();
         Vector3 ogPosition = gameObject.transform.position;
         float posX;
@@ -135,4 +134,5 @@ CHECK IF CODE CAN BE APPLIED*/
 
         yield return null;
     }
+
 }
