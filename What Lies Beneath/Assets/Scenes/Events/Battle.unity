@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m: []
+  numEnemies: 0
   coroutineOff: 0
 --- !u!4 &265808136
 Transform:
@@ -2956,6 +2957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5fa60888ccc3634a9ebc8fd9cb03029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGameEnd: 0
   playerPrefab: Player
   spawnPositions:
   - {fileID: 1178169790}
@@ -2964,6 +2966,7 @@ MonoBehaviour:
   - {fileID: 786270578}
   players: []
   playerInGame: 0
+  uiController: {fileID: 0}
 --- !u!4 &2107608742
 Transform:
   m_ObjectHideFlags: 0
