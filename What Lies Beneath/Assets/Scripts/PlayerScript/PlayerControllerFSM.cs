@@ -80,10 +80,7 @@ public class PlayerControllerFSM : MonoBehaviour
         if (newScene)
         {
             enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            if(view.IsMine) 
-            {
-                stateMachine = gameObject.GetComponent<HeroStateMachine>();
-            }
+            stateMachine = gameObject.GetComponent<HeroStateMachine>();
 
             monsterB = new MonsterB[enemies.Length];
             for (int i = 0; i < enemies.Length; i++)
