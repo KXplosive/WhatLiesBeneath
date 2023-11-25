@@ -68,7 +68,7 @@ public class BattleManager : MonoBehaviour
     {
         //go back to encounter1
         Debug.Log("You Lose");
-        ScenesManager.currentScene = -1;
-        SceneManager.LoadScene(6);
+        //ScenesManager.currentScene = -1;
+        //SceneManager.LoadScene(6);
     }
 }

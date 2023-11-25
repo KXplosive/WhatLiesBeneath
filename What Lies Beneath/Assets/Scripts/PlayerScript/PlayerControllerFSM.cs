@@ -2,10 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class PlayerControllerFSM : MonoBehaviour
 {
     public GameObject[] enemies;
+
+    [HideInInspector]
+    public int id;
+
+    [Header("Components")]
+    public Player photonPlayer;
+
+    PhotonView view;
 
     public GameObject cursor;
 
@@ -55,27 +65,12 @@ public class PlayerControllerFSM : MonoBehaviour
         startingPosition = gameObject.transform.position;
         potions = gameObject.GetComponent<Potions>();
     }
-    /*
-    public void LoadMosters()
-    {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        monsterB = new MonsterB[enemies.Length];
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            monsterB[i] = enemies[i].GetComponent<MonsterB>();
-        }
-    }
-    */
+
     // Start is called before the first frame update
     void Start()
     {
         
-        /*
-        for(int i = 0; i < potions.Length; i++)
-        {
-            potions[i].quantity = 3;
-        }
-        */
+        view = GetComponent<PhotonView>();
         
     }
 
@@ -85,7 +80,11 @@ public class PlayerControllerFSM : MonoBehaviour
         if (newScene)
         {
             enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            stateMachine = gameObject.GetComponent<HeroStateMachine>();
+            if(view.IsMine) 
+            {
+                stateMachine = gameObject.GetComponent<HeroStateMachine>();
+            }
+
             monsterB = new MonsterB[enemies.Length];
             for (int i = 0; i < enemies.Length; i++)
             {

@@ -19,6 +19,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject nextButton;
     public List<GameObject> enemiesGO;
     public PlayerControllerFSM player;
+    public GameObject[] players;
     //private PlayerControllerFSM P1;
 
     Vector3[] positions = { new Vector3(2f, -1.5f), new Vector3(4.2f, 0f), new Vector3(5f, -3f), new Vector3(7.25f, -1.5f) };
@@ -28,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerFSM>();
+        players = GameObject.FindGameObjectsWithTag("Player");
         enemyGroups = AreaController.Instance.groups[AreaController.Instance.area - 1];
         battleGroup = enemyGroups[Random.Range(0, enemyGroups.Length)];
 
@@ -38,7 +39,10 @@ public class EnemySpawner : MonoBehaviour
             enemiesGO.Add(Instantiate(battleGroup.enemies[i], positions[i], Quaternion.identity));
         }
         numOrdas -= 1;
-        player.enemies = enemiesGO.ToArray();
+        foreach(GameObject pl in players)
+        {
+            pl.GetComponent<PlayerControllerFSM>().enemies = enemiesGO.ToArray();
+        }
         //P1.LoadMosters();
 
     }
