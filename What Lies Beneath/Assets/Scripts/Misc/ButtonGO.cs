@@ -114,6 +114,8 @@ public class ButtonGO : MonoBehaviour
         {
             p.GetComponent<PlayerControllerFSM>().newScene = true;
         }
+        PlayerControllerFSM playerFSM = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerFSM>();
+        playerFSM.newScene = true;
     }
 
     // Update is called once per frame
