@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,8 +25,8 @@ public class ButtonGO : MonoBehaviour
     public void LoadNewLevel()
     {
         Debug.Log("Cambio de escena");
-        int escenaPosNeg = Random.Range(0, 2);
-        int escenaNum = Random.Range(0, 3);
+        int escenaPosNeg = UnityEngine.Random.Range(0, 2);
+        int escenaNum = UnityEngine.Random.Range(0, 3);
         //instanciar gameobject player
 
         
@@ -114,8 +115,11 @@ public class ButtonGO : MonoBehaviour
         {
             p.GetComponent<PlayerControllerFSM>().newScene = true;
         }
+        /*
         PlayerControllerFSM playerFSM = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerFSM>();
+        Array.Clear(playerFSM.enemies, 0, playerFSM.enemies.Length);
         playerFSM.newScene = true;
+        */
     }
 
     // Update is called once per frame

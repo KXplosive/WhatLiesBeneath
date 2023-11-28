@@ -1,5 +1,6 @@
 using System.Collections;
 using System.IO;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Unity.VisualScripting;
@@ -31,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
     {
         players = GameObject.FindGameObjectsWithTag("Player");
         enemyGroups = AreaController.Instance.groups[AreaController.Instance.area - 1];
-        battleGroup = enemyGroups[Random.Range(0, enemyGroups.Length)];
+        battleGroup = enemyGroups[UnityEngine.Random.Range(0, enemyGroups.Length)];
 
         // spawnear a los enemgos
         for (int i = 0; i < battleGroup.enemies.Length; i++)
@@ -43,6 +44,9 @@ public class EnemySpawner : MonoBehaviour
         {
             pl.GetComponent<PlayerControllerFSM>().enemies = enemiesGO.ToArray();
         }
+        PlayerControllerFSM playerFSM = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerFSM>();
+        Array.Clear(playerFSM.enemies, 0, playerFSM.enemies.Length);
+        playerFSM.newScene = true;
         //P1.LoadMosters();
 
     }

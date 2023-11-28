@@ -83,6 +83,7 @@ public class PlayerControllerFSM : MonoBehaviour
             stateMachine = gameObject.GetComponent<HeroStateMachine>();
 
             monsterB = new MonsterB[enemies.Length];
+            Debug.Log(monsterB.Length);
             for (int i = 0; i < enemies.Length; i++)
             {
                 monsterB[i] = enemies[i].GetComponent<MonsterB>();
