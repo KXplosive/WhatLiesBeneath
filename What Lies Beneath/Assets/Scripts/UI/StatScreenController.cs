@@ -18,6 +18,7 @@ public class StatScreenController : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerFSM>();
         potions = player.gameObject.GetComponent<Potions>();
         inventory = player.inventory;
         UpdateInventory();
