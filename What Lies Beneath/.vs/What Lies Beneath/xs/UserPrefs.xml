@@ -1,10 +1,10 @@
 ﻿<Properties StartupConfiguration="{7CAC69AE-92A9-997A-C707-52F04BFCCF09}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EnemyScript/EnemySpawner.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EnemyScript/StartBossScene.cs">
     <Files>
       <File FileName="Assets/Scripts/Misc/GenerateChestReward.cs" Line="47" Column="21" />
       <File FileName="Assets/Scripts/PlayerScript/PlayerControllerFSM.cs" Line="85" Column="34" />
       <File FileName="Assets/Scripts/PlayerScript/Inventory.cs" Line="4" Column="1" />
-      <File FileName="Assets/Scripts/UI/StatScreenController.cs" Line="31" Column="61" />
+      <File FileName="Assets/Scripts/UI/StatScreenController.cs" Line="32" Column="61" />
       <File FileName="Assets/Scripts/Saves/FileHandler.cs" Line="77" Column="110" />
       <File FileName="Assets/Scripts/Saves/SaveData.cs" Line="12" Column="22" />
       <File FileName="Assets/Scripts/Saves/pruebaSave.cs" Line="34" Column="6" />
@@ -16,8 +16,9 @@
       <File FileName="Assets/Scripts/MosterScript/MonsterController.cs" Line="27" Column="15" />
       <File FileName="Assets/Scripts/PlayerScript/HeroStateMachine.cs" Line="8" Column="1" />
       <File FileName="Assets/Scripts/Misc/BattleManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Misc/ButtonGO.cs" Line="118" Column="9" />
-      <File FileName="Assets/Scripts/EnemyScript/EnemySpawner.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Misc/ButtonGO.cs" Line="122" Column="11" />
+      <File FileName="Assets/Scripts/EnemyScript/EnemySpawner.cs" Line="47" Column="9" />
+      <File FileName="Assets/Scripts/EnemyScript/StartBossScene.cs" Line="3" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

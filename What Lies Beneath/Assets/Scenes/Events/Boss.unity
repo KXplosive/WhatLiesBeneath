@@ -616,6 +616,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4507588674708383924, guid: 68c012885342bba4b88b0b81f5d59a1f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68c012885342bba4b88b0b81f5d59a1f, type: 3}
 --- !u!1 &315283079
@@ -1538,6 +1542,7 @@ GameObject:
   - component: {fileID: 676988267}
   - component: {fileID: 676988266}
   - component: {fileID: 676988268}
+  - component: {fileID: 676988269}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1622,6 +1627,18 @@ MonoBehaviour:
   temperatureUI: {fileID: 1343299573}
   monsterController: {fileID: 315283080}
   nextEncounterBtn: {fileID: 1922856894}
+--- !u!114 &676988269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676988263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bc93c1ba0b14471e8e497e5cc43485c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &683325327
 GameObject:
   m_ObjectHideFlags: 0
@@ -2758,7 +2775,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!224 &1375983465
 RectTransform:
