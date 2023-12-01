@@ -1754,8 +1754,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 785986646}
   m_HandleRect: {fileID: 785986645}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.9999708
+  m_Value: 0
+  m_Size: 0.9999638
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1922,6 +1922,7 @@ MonoBehaviour:
   playerItemPrefab: {fileID: 3195291372786767452, guid: 82a680a458ab36844bf23e15c8dabcfa, type: 3}
   playerItemParent: {fileID: 763427259}
   playButton: {fileID: 373758554}
+  playerInstance: {fileID: 7676013285262792864, guid: af267c44133bb1544af0640a976f5b7c, type: 3}
 --- !u!4 &1244152468
 Transform:
   m_ObjectHideFlags: 0

@@ -738,7 +738,7 @@ GameObject:
   - component: {fileID: -2874575112272159932}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: SecondPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -889,11 +889,11 @@ MonoBehaviour:
   character:
     nombre: Clyde
     level: 0
-    baseHP: 100
+    baseHP: 1000
     currentHP: 0
     baseMP: 100
     currentMP: 0
-    baseST: 100
+    baseST: 1000
     currentST: 0
     temperature: 35
     attack: 100
@@ -902,19 +902,19 @@ MonoBehaviour:
     currentDefense: 0
     attacks:
     - name: Attack1
-      baseDamage: 5
+      baseDamage: 15
       MP: 0
       ST: 10
       temperatureChange: 5
     - name: Attack2
-      baseDamage: 10
+      baseDamage: 35
       MP: 0
-      ST: 25
+      ST: 20
       temperatureChange: 10
     - name: Attack3
-      baseDamage: 100000
+      baseDamage: 70
       MP: 0
-      ST: 50
+      ST: 40
       temperatureChange: 15
   currentBattleState: 0
   currentTemperatureState: 0

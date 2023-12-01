@@ -25,6 +25,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public Transform playerItemParent;
 
     public GameObject playButton;
+    public GameObject playerInstance;
 
     private void Start()
     {
@@ -139,8 +140,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public void OnClickPlayButton()
     {
+        Variables.contNivel++;
         PhotonNetwork.LoadLevel("Battle");
+        Variables.contPosNeg = 1;
+        Variables.contEventos++;
         
     }
-
 }

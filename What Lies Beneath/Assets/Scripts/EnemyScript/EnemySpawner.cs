@@ -21,6 +21,8 @@ public class EnemySpawner : MonoBehaviour
     public List<GameObject> enemiesGO;
     public PlayerControllerFSM player;
     public GameObject[] players;
+    public GameObject playerGO;
+    public GameObject playerGO2;
     //private PlayerControllerFSM P1;
 
     Vector3[] positions = { new Vector3(2f, -1.5f), new Vector3(4.2f, 0f), new Vector3(5f, -3f), new Vector3(7.25f, -1.5f) };
@@ -30,6 +32,12 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        if (GameObject.FindGameObjectWithTag("Player") == null)
+        {
+            DontDestroyOnLoad(Instantiate(playerGO));
+            DontDestroyOnLoad(Instantiate(playerGO2, new Vector2(-2f, -3f), Quaternion.identity));
+        }
+
         players = GameObject.FindGameObjectsWithTag("Player");
         enemyGroups = AreaController.Instance.groups[AreaController.Instance.area - 1];
         battleGroup = enemyGroups[UnityEngine.Random.Range(0, enemyGroups.Length)];

@@ -24,7 +24,7 @@ public class ScenesManager : MonoBehaviour
     public static int[] sceneOrder = {1, 1, 2, 1, 1, 2, 3,4,0 };
     public static int currentScene = sceneOrder.Length-1;
 
-    public static float currentHP;
+    public static float currentHP = 100;
 
     public static float temperature;
 

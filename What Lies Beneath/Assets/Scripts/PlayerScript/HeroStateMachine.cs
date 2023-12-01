@@ -253,18 +253,18 @@ public class HeroStateMachine : MonoBehaviour
     {
         while (currentBattleState != BattleState.DEAD)
         {
-            if (currentBattleState==BattleState.WAITING && character.currentST < 100)
+            if (currentBattleState==BattleState.WAITING && character.currentST < character.baseST)
             {
-                character.currentST += 2.5f * Time.deltaTime;
-                if (character.currentST > 100)
+                character.currentST += 25f * Time.deltaTime;
+                if (character.currentST > character.baseST)
                 {
-                    character.currentST = 100;
+                    character.currentST = character.baseST;
                 }
             }else if (currentBattleState == BattleState.TIRED)
             {
                 if (character.currentST < 0) { character.currentST = 0; }
-                character.currentST += 10f * Time.deltaTime;
-                if (character.currentST >=100) { currentBattleState = BattleState.WAITING; }
+                character.currentST += 100f * Time.deltaTime;
+                if (character.currentST >= character.baseST) { currentBattleState = BattleState.WAITING; }
             }
             yield return null;
         }

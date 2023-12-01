@@ -888,11 +888,11 @@ MonoBehaviour:
   character:
     nombre: Clyde
     level: 0
-    baseHP: 100
+    baseHP: 300
     currentHP: 0
     baseMP: 100
     currentMP: 0
-    baseST: 100
+    baseST: 500
     currentST: 0
     temperature: 35
     attack: 100
@@ -901,19 +901,19 @@ MonoBehaviour:
     currentDefense: 0
     attacks:
     - name: Attack1
-      baseDamage: 5
+      baseDamage: 1500
       MP: 0
       ST: 10
       temperatureChange: 5
     - name: Attack2
-      baseDamage: 10
+      baseDamage: 3000
       MP: 0
-      ST: 25
+      ST: 20
       temperatureChange: 10
     - name: Attack3
-      baseDamage: 100000
+      baseDamage: 6000
       MP: 0
-      ST: 50
+      ST: 40
       temperatureChange: 15
   currentBattleState: 0
   currentTemperatureState: 0
@@ -936,6 +936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies: []
+  id: 0
   cursor: {fileID: 5524555241018301975, guid: 6656bed249f0942db8c872f00574ef9b, type: 3}
   potions: {fileID: 0}
   gold: 0
